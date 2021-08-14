@@ -16,9 +16,9 @@ fascinated</b>
 
 <p align="center">&nbsp;
  
-|   | Activities |   Languages |  |
-| - | ---------- | ----------- |---|
-|    | <img align="center" src="https://github-readme-stats.vercel.app/api?username=andersonlebon&show_icons=true&locale=en" alt="akash-chowrasia" width="410" /> | <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=andersonlebon&show_icons=true&locale=en&layout=compact" alt="akash-chowrasia" />|  |
+| Activities |   Languages |
+| ---------- | ----------- |
+ | <img align="center" src="https://github-readme-stats.vercel.app/api?username=andersonlebon&show_icons=true&locale=en" alt="akash-chowrasia" width="410" /> | <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=andersonlebon&show_icons=true&locale=en&layout=compact" alt="akash-chowrasia" />|
 </p>
 
 <hr>
