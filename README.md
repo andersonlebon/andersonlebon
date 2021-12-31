@@ -22,8 +22,6 @@ fascinated</b>
  | <img align="center" src="https://github-readme-stats.vercel.app/api?username=andersonlebon&show_icons=true&theme=tokyonight" alt="akash-chowrasia" width="410" /> | <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=andersonlebon&show_icons=true&theme=tokyonight&layout=compact" alt="akash-chowrasia" />|
 </p>
 
-
-
 <hr>
 
 💻 ***Languages and Tools:*** 🛠️<br>
