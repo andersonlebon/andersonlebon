@@ -9,7 +9,6 @@ fascinated</b>
     <b>excel</b> <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Medal.gif" width="20px">&nbsp.
   </em> 
   <br>
-  
 </p>
 <br>
 
