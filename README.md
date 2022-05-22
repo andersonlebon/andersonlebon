@@ -11,7 +11,6 @@ fascinated</b>
 </p>
 <br>
 <p align="center">&nbsp;
-
  
 | Activities |   Languages |
 | ---------- | ----------- |
