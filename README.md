@@ -4,8 +4,6 @@
   <em>always <b>
 fascinated</b>
     about new challenges to 
-    <b>grow</b> <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Rocket.gif" width="18px">and 
-    <b>excel</b> <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Medal.gif" width="20px">&nbsp.
   </em> 
   <br>
 </p>
@@ -43,4 +41,5 @@ fascinated</b>
 <br>
 🤓 **Interested:** <br>
 
-![React](https://img.shields.io/badge/-React-000000?style=flat&logo=react)
+![React](https://img.shields.io/badge/-React-000000?style=flat&logo=react)![Ruby](https://img.shields.io/badge/-Ruby-000000?style=flat&logo=ruby)
+![Rails](https://img.shields.io/badge/-Rails-000000?style=flat&logo=rails)
