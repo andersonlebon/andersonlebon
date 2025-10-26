@@ -1,4 +1,4 @@
-<img width="1509" alt="Screenshot 2023-01-14 at 22 05 42" src="https://user-images.githubusercontent.com/65068771/212502560-b0393fc3-4bd3-4e32-8133-686b990ea240.png">
+<img width="1920" height="958" alt="image" src="https://github.com/user-attachments/assets/9f1cfe2a-b4f6-46b9-bdfe-ebbf58cec3bb" />
 
 <p align="center"><a href="https://www.linkedin.com/in/andersonlebon/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="aksia" height="30" width="40" /></a><a href="https://www.hackerrank.com/Andersonlebon" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/hackerrank.svg" alt="@chowrasia_akash1" height="30" width="40" /></a><a href="https://twitter.com/BuyananaCaleb" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="akash_chowrasia" height="30" width="40" /></a><a href = "mailto: buyananderson@gmail.com"><img align="center" src="https://simpleicons.org/icons/gmail.svg" height="30" width="40" /></a></p>
 <p align="center">
