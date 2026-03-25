@@ -1,6 +1,7 @@
-<img width="1920" height="958" alt="image" src="https://github.com/user-attachments/assets/9f1cfe2a-b4f6-46b9-bdfe-ebbf58cec3bb" />
+<img width="1397" height="927" alt="image" src="https://github.com/user-attachments/assets/c711acff-2177-44be-8a3b-2474e9cd0582" />
 
-<p align="center"><a href="https://www.linkedin.com/in/andersonlebon/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="aksia" height="30" width="40" /></a><a href="https://www.hackerrank.com/Andersonlebon" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/hackerrank.svg" alt="@chowrasia_akash1" height="30" width="40" /></a><a href="https://twitter.com/BuyananaCaleb" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="akash_chowrasia" height="30" width="40" /></a><a href = "mailto: buyananderson@gmail.com"><img align="center" src="https://simpleicons.org/icons/gmail.svg" height="30" width="40" /></a></p>
+
+<p align="center"><a href="https://www.linkedin.com/in/andersonlebon/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="aksia" height="30" width="40" /></a><a href="https://www.hackerrank.com/Andersonlebon" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/hackerrank.svg" alt="@chowrasia_akash1" 
 <p align="center">
   A former student at <a href="https://microverse.org"><img align="center" src="https://img.shields.io/badge/Microverse-blueviolet"/><a/> <br>
   <em>always <b>
