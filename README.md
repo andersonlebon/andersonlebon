@@ -1,7 +1,6 @@
 <img width="1397" height="927" alt="image" src="https://github.com/user-attachments/assets/c711acff-2177-44be-8a3b-2474e9cd0582" />
 
 
-<p align="center"><a href="https://www.linkedin.com/in/andersonlebon/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="aksia" height="30" width="40" /></a><a href="https://www.hackerrank.com/Andersonlebon" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/hackerrank.svg" alt="@chowrasia_akash1"></a></p>
 <p align="center">
   A former student at <a href="https://microverse.org"><img align="center" src="https://img.shields.io/badge/Microverse-blueviolet"/><a/> <br>
   <em>always <b>
