@@ -3,16 +3,17 @@
     { "source": "/admin", "destination": "/", "permanent": true },
     { "source": "/admin/:path*", "destination": "/", "permanent": true },
     { "source": "/services", "destination": "/", "permanent": true },
-    { "source": "/faith", "destination": "/", "permanent": true }
+    { "source": "/faith", "destination": "/", "permanent": true },
+    { "source": "/og-image.png", "destination": "/og-hero.jpg", "permanent": false }
   ],
   "rewrites": [
     { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
-      "source": "/og-image.png",
+      "source": "/og-hero.jpg",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, immutable" }
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
