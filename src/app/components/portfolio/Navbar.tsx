@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
-import { Github, Linkedin, Menu, X, Sparkles } from 'lucide-react';
+import { FolderOpen, Github, Linkedin, Menu, X, Sparkles } from 'lucide-react';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 const navLinks = [
@@ -21,6 +21,7 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const location = useLocation();
   const isExpertisePage = location.pathname === '/expertise';
+  const isProjectsPage = location.pathname === '/projects';
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 20);
@@ -78,7 +79,7 @@ export function Navbar() {
             </motion.div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {!isExpertisePage && navLinks.map((link) => (
               <button
                 key={link.href}
@@ -101,6 +102,18 @@ export function Navbar() {
             ))}
 
             <Link
+              to="/projects"
+              className={`relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
+                isProjectsPage
+                  ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
+                  : 'text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8'
+              }`}
+            >
+              <FolderOpen size={13} aria-hidden="true" />
+              Archive
+            </Link>
+
+            <Link
               to="/expertise"
               className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
                 isExpertisePage
@@ -113,7 +126,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <a
               href={settings.githubUrl}
               target="_blank"
@@ -139,7 +152,7 @@ export function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            className="md:hidden p-2 text-gray-400 hover:text-[#F5C518] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
+            className="lg:hidden p-2 text-gray-400 hover:text-[#F5C518] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
           >
             {mobileOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
           </button>
@@ -150,7 +163,7 @@ export function Navbar() {
         initial={false}
         animate={{ opacity: mobileOpen ? 1 : 0, y: mobileOpen ? 0 : -20 }}
         style={{ pointerEvents: mobileOpen ? 'auto' : 'none' }}
-        className="fixed top-16 left-0 right-0 z-40 bg-[#0F0F0F]/98 backdrop-blur-xl border-b border-[#F5C518]/10 md:hidden"
+        className="fixed top-16 left-0 right-0 z-40 bg-[#0F0F0F]/98 backdrop-blur-xl border-b border-[#F5C518]/10 lg:hidden"
       >
         <div className="px-6 py-4 flex flex-col gap-1">
           {!isExpertisePage && navLinks.map((link) => (
@@ -166,6 +179,19 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
+
+          <Link
+            to="/projects"
+            onClick={() => setMobileOpen(false)}
+            className={`flex items-center gap-2 px-4 py-3 text-sm rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
+              isProjectsPage
+                ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
+                : 'text-gray-300 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <FolderOpen size={14} aria-hidden="true" />
+            Project Archive
+          </Link>
 
           <Link
             to="/expertise"

@@ -1,6 +1,7 @@
 import { useRef } from 'react';
+import { Link } from 'react-router';
 import { motion, useInView, useReducedMotion } from 'motion/react';
-import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Project, usePortfolio } from '../../context/PortfolioContext';
 
 function ProjectLinks({ project, compact = false }: { project: Project; compact?: boolean }) {
@@ -177,6 +178,25 @@ export function Projects() {
             </motion.article>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.5 }}
+          className="mt-12 flex flex-col items-center gap-3 text-center"
+        >
+          <p className="text-sm text-gray-500">
+            Explore public repositories, private products, organization work, and earlier projects.
+          </p>
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 rounded-xl border border-[#F5C518]/40 px-6 py-3 text-sm text-[#F5C518] transition-colors hover:bg-[#F5C518]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5C518]"
+            style={{ fontWeight: 650 }}
+          >
+            See all projects
+            <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

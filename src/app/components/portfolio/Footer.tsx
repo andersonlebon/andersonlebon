@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { motion } from 'motion/react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { usePortfolio } from '../../context/PortfolioContext';
@@ -15,8 +15,13 @@ const navLinks = [
 
 export function Footer() {
   const { settings } = usePortfolio();
+  const location = useLocation();
 
   const scrollTo = (href: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/${href}`;
+      return;
+    }
     document.getElementById(href.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -53,6 +58,12 @@ export function Footer() {
                 className="text-sm text-gray-400 hover:text-[#F5C518] transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
               >
                 Expertise
+              </Link>
+              <Link
+                to="/projects"
+                className="text-sm text-gray-400 hover:text-[#F5C518] transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
+              >
+                All Projects
               </Link>
             </div>
           </div>
