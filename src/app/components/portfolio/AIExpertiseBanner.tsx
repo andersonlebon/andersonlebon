@@ -75,7 +75,7 @@ export function AIExpertiseBanner() {
                 <motion.button
                   whileHover={{ scale: 1.04, boxShadow: '0 0 25px rgba(245,197,24,0.3)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F5C518] text-black hover:bg-[#DEBA15] transition-all"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F5C518] text-black hover:bg-[#DEBA15] transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   style={{ fontWeight: 700 }}
                 >
                   View Full Expertise

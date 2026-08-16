@@ -3,232 +3,192 @@ import { motion, useInView } from 'motion/react';
 import { Link } from 'react-router';
 import {
   Sparkles, Cpu, Layers, PenTool, ArrowRight, ExternalLink,
-  Github, Zap, Target, TrendingUp, Users, Code2, BookOpen,
-  Star, Clock, ChevronRight, Globe, Braces, Database, Cloud,
-  LayoutDashboard, Box, Workflow, Lightbulb, Brain, Figma,
+  Github, Zap, Target, Code2, BookOpen, Star, ChevronRight,
+  Globe, Braces, Database, Cloud, LayoutDashboard, Workflow, Brain,
 } from 'lucide-react';
 import { Navbar } from '../components/portfolio/Navbar';
 import { Footer } from '../components/portfolio/Footer';
-
-// ─── Domain Data ───────────────────────────────────────────────────────────────
+import { SEO } from '../components/SEO';
+import { projects } from '../context/PortfolioContext';
 
 const domains = [
   {
-    id: 'openai',
-    icon: Brain,
-    emoji: '🤖',
-    title: 'OpenAI & Generative AI',
-    subtitle: 'Prompt Engineer · API Integrator · AI Product Builder',
+    id: 'fullstack',
+    icon: Cpu,
+    title: 'Full-stack product work',
+    subtitle: 'React · Next.js · TypeScript · Node.js',
     color: '#F5C518',
-    glow: 'rgba(245,197,24,0.12)',
-    impact: 'Integrating LLMs into production product workflows',
+    impact: 'Shipped live products with auth, payments, and operations dashboards',
     description:
-      'Hands-on experience using large language models in product work: prompt design, API integration, and shipping AI-assisted features without treating the model as the whole product.',
+      'I build the client, API, and data layer as one product. The work in this portfolio is production software: enrollment, booking, donations, role-based portals, and public sites that stay online.',
     capabilities: [
-      'GPT-4 / GPT-4o API integration',
-      'Prompt engineering & chain-of-thought',
-      'RAG pipelines with vector databases',
-      'AI agent design & orchestration',
-      'Streaming & real-time AI responses',
-      'Content moderation & safety layers',
+      'Next.js and React product UIs',
+      'TypeScript across client and API',
+      'NestJS and Node.js services',
+      'Supabase auth and Postgres data models',
+      'Stripe and Paystack payment flows',
+      'Role-based access and admin tools',
     ],
-    tools: ['OpenAI API', 'LangChain', 'Supabase pgvector', 'Vercel AI SDK', 'Claude'],
-    stats: [{ v: 'AI', l: 'Product work' }, { v: 'RAG', l: 'Pipelines' }, { v: 'APIs', l: 'Integrations' }],
-    image: 'https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    tools: ['React', 'Next.js', 'TypeScript', 'NestJS', 'Supabase', 'PostgreSQL', 'MongoDB', 'Stripe'],
+    stats: [{ v: 'Next.js', l: 'Primary UI' }, { v: 'TS', l: 'End to end' }, { v: 'Live', l: 'Deployments' }],
   },
   {
-    id: 'cursor',
+    id: 'ai-dev',
     icon: Zap,
-    emoji: '⚡',
-    title: 'Cursor & AI-Powered Dev',
-    subtitle: 'AI Pair Programmer · Context Engineer · 10× Developer',
+    title: 'AI-assisted engineering',
+    subtitle: 'Cursor · production delivery · Aspyn AI',
     color: '#E5E7EB',
-    glow: 'rgba(229,231,235,0.08)',
-    impact: 'Daily AI-assisted engineering with Cursor and production code review',
+    impact: 'Daily engineering practice with Cursor, plus current work at Aspyn AI',
     description:
-      'I use Cursor as a primary IDE and treat AI pair programming as a repeatable engineering practice: project rules, multi-file context, tests, and reviews.',
+      'I use Cursor as my primary IDE and treat AI pair programming as a repeatable workflow: project rules, focused context, tests, and reviews. I currently work at Aspyn AI on AI operator software. Client systems stay private.',
     capabilities: [
-      '.cursorrules & project-level AI memory',
-      'Multi-file refactoring with AI context',
-      'Test generation & code review automation',
-      'Codebase-aware feature implementation',
-      'Documentation generation pipelines',
-      'AI-driven debugging workflows',
+      'Cursor as a daily development environment',
+      'Project rules and multi-file context',
+      'Tests and review loops with AI assistance',
+      'Shipping product work inside an AI company',
+      'Keeping private client details out of public case studies',
     ],
-    tools: ['Cursor', 'GitHub Copilot', 'v0.dev'],
-    stats: [{ v: 'Cursor', l: 'Daily driver' }, { v: 'Reviews', l: 'AI-assisted' }, { v: 'Ship', l: 'Faster loops' }],
-    image: 'https://images.unsplash.com/photo-1664526937033-fe2c11f1be25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    tools: ['Cursor', 'GitHub Copilot', 'TypeScript', 'Git'],
+    stats: [{ v: 'Cursor', l: 'Daily IDE' }, { v: 'Aspyn', l: 'Current role' }, { v: 'Ship', l: 'Product work' }],
   },
   {
     id: 'figma',
     icon: PenTool,
-    emoji: '🎨',
-    title: 'Figma & Design Systems',
-    subtitle: 'Design Systems · Prototyping · Design-to-Code',
+    title: 'Interface engineering',
+    subtitle: 'Figma · design-to-code · accessible UI',
     color: '#A78BFA',
-    glow: 'rgba(167,139,250,0.10)',
-    impact: 'Designed and implemented production-ready Figma-to-code interfaces',
+    impact: 'Turned Figma designs into production React interfaces',
     description:
-      'I sit at the intersection of design and engineering. I design in Figma with the same rigour I apply to code: component hierarchies, tokens, accessibility, and handoff.',
+      'I work at the handoff between design and code. I implement component hierarchies, spacing, and interaction states that match the source file, then keep the UI usable on keyboard and smaller screens.',
     capabilities: [
-      'Full design system architecture',
-      'Auto Layout & responsive components',
-      'Design tokens & variable theming',
-      'High-fidelity interactive prototypes',
       'Figma-to-React component mapping',
-      'Dev Mode & inspect workflows',
-      'FigJam system architecture diagrams',
-      'User flow & journey mapping',
+      'Design tokens and consistent theming',
+      'Responsive layouts and Auto Layout thinking',
+      'Keyboard focus and accessible labels',
+      'Public marketing sites and product dashboards',
     ],
-    tools: ['Figma', 'FigJam', 'Figma Variables', 'Storybook', 'Style Dictionary', 'Zeroheight', 'Lottie', 'Framer'],
-    stats: [{ v: 'Figma', l: 'To code' }, { v: 'UI', l: 'Systems' }, { v: 'A11y', l: 'First' }],
-    image: 'https://images.unsplash.com/photo-1662776848768-a648c81e512f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    tools: ['Figma', 'Tailwind CSS', 'React', 'Framer Motion'],
+    stats: [{ v: 'Figma', l: 'To code' }, { v: 'UI', l: 'Systems' }, { v: 'A11y', l: 'In the build' }],
   },
   {
     id: 'architecture',
     icon: Layers,
-    emoji: '🏗️',
-    title: 'System Architecture',
-    subtitle: 'Distributed Systems · Cloud Infra · Scalable Design',
+    title: 'Product architecture',
+    subtitle: 'Auth · data · payments · deployment',
     color: '#34D399',
-    glow: 'rgba(52,211,153,0.08)',
-    impact: 'Shipped production systems with auth, payments, and role-based access',
+    impact: 'Designed schemas, access models, and deploy paths used in live products',
     description:
-      'I design systems before writing a single line of code, then implement them: auth, data models, APIs, dashboards, and deployment. The work is observable, maintainable, and ready for real users.',
+      'Before a feature ships, I map the data model, access rules, and hosting path. The public work shows auth, payments, bilingual content, maps, and role-based portals rather than slide-deck architecture.',
     capabilities: [
-      'Microservices & event-driven architecture',
-      'Serverless & edge computing design',
-      'Database schema & query optimization',
-      'API design (REST, GraphQL, gRPC)',
-      'CI/CD pipeline architecture',
-      'Observability & monitoring stacks',
-      'Security & compliance architecture',
-      'Cost optimization strategies',
+      'Auth and role-based access (RBAC)',
+      'Postgres schemas with Drizzle',
+      'REST APIs and React Query clients',
+      'CI/CD and Vercel production deploys',
+      'Observability enough to operate a small product',
     ],
-    tools: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'Redis', 'PostgreSQL', 'Kafka', 'GraphQL'],
-    stats: [{ v: 'Auth', l: 'RBAC' }, { v: 'Payments', l: 'Stripe' }, { v: 'Cloud', l: 'AWS + Vercel' }],
-    image: 'https://images.unsplash.com/photo-1664526937033-fe2c11f1be25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    tools: ['PostgreSQL', 'Drizzle', 'Supabase', 'Docker', 'AWS', 'Vercel', 'Playwright'],
+    stats: [{ v: 'Auth', l: 'RBAC' }, { v: 'Pay', l: 'Stripe' }, { v: 'Cloud', l: 'Vercel + AWS' }],
   },
 ];
 
-// ─── Impact Projects ────────────────────────────────────────────────────────────
-
 const impactProjects = [
   {
-    tag: 'Education × Full-Stack',
+    tag: 'Education',
     tagColor: '#F5C518',
     title: 'Primus Learning Platform',
     description:
       'Production learning platform covering courses, bootcamps, payments, and administration. Public-safe case study of the largest eligible product I have shipped.',
+    live: 'https://www.primuslearning.io/',
+    github: '',
     metrics: [
       { icon: BookOpen, label: 'Domain', value: 'EdTech' },
       { icon: Code2, label: 'Stack', value: 'Next.js' },
       { icon: Target, label: 'Live site', value: 'Yes' },
     ],
     stack: ['Next.js', 'TypeScript', 'NestJS', 'MongoDB', 'Stripe', 'Paystack'],
-    type: 'Work Project',
+    type: 'Private product',
     featured: true,
   },
   {
-    tag: 'Nonprofit × Product',
+    tag: 'Nonprofit',
     tagColor: '#A78BFA',
     title: 'One By One Ministries',
     description:
       'Bilingual ministry website with donations, stories, media, maps, and an operations dashboard. Public repository and live production site.',
+    live: 'https://www.onebyoneministries.org/',
+    github: 'https://github.com/andersonlebon/onebyone-ministry',
     metrics: [
       { icon: Globe, label: 'Live', value: 'Yes' },
-      { icon: Users, label: 'Focus', value: 'DRC' },
       { icon: Star, label: 'Public repo', value: 'Yes' },
+      { icon: LayoutDashboard, label: 'Ops', value: 'Dashboard' },
     ],
     stack: ['Next.js', 'Supabase', 'Drizzle', 'Stripe', 'Leaflet'],
-    type: 'Product',
+    type: 'Public product',
     featured: false,
   },
   {
-    tag: 'Government × RBAC',
+    tag: 'Operations',
     tagColor: '#F5C518',
     title: 'NJ Safety Driver',
     description:
       'Role-based portal for drivers, field agents, and admins: vehicles, documents, infractions, and payments.',
+    live: 'https://nj-safety-driver-web.vercel.app/',
+    github: 'https://github.com/andersonlebon/Nj-safety-driver-web',
     metrics: [
-      { icon: Users, label: 'Roles', value: '3' },
+      { icon: Target, label: 'Roles', value: '3' },
       { icon: LayoutDashboard, label: 'Auth', value: 'Supabase' },
       { icon: Globe, label: 'Live', value: 'Yes' },
     ],
     stack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL'],
-    type: 'Product',
+    type: 'Public product',
     featured: true,
   },
 ];
 
-// ─── Side Projects ──────────────────────────────────────────────────────────────
-
-const sideProjects = [
-  {
-    emoji: '💇',
-    title: 'Kylie Hair',
-    description: 'Salon booking, commerce, and landing CMS with a live branded site.',
-    stack: ['Next.js', 'Supabase', 'Drizzle'],
-    links: { github: '', live: 'https://www.kyliehairr.com/' },
-    color: '#F5C518',
-  },
-  {
-    emoji: '⚽',
-    title: 'MatchPulse',
-    description: 'World Cup 2026 schedule tracker with reminders and calendar export.',
-    stack: ['React', 'Vite', 'Supabase'],
-    links: { github: 'https://github.com/andersonlebon/matchpulse-mvp', live: 'https://www.matchpuls.live/' },
-    color: '#A78BFA',
-  },
-  {
-    emoji: '🏛️',
-    title: 'VDARVS',
-    description: 'Local-government records prototype for Lesotho village administration.',
-    stack: ['Next.js', 'Supabase', 'Playwright'],
-    links: { github: 'https://github.com/litebohop/vdarvs', live: 'https://vdarvs.vercel.app/' },
-    color: '#E5E7EB',
-  },
-];
-
-// ─── Resources ─────────────────────────────────────────────────────────────────
+const sideProjects = projects.filter((project) =>
+  ['kylie-hair', 'matchpulse', 'vdarvs'].includes(project.id),
+).map((project) => ({
+  title: project.title,
+  description: project.description,
+  stack: project.techStack.slice(0, 4),
+  links: { github: project.githubUrl, live: project.liveUrl },
+}));
 
 const resources = [
   {
-    category: 'AI Tools',
-    icon: Brain,
+    category: 'Product stack',
+    icon: Code2,
     color: '#F5C518',
     items: [
-      { name: 'OpenAI Platform', desc: 'GPT-4, embeddings, fine-tuning', href: 'https://platform.openai.com' },
-      { name: 'LangChain', desc: 'LLM application framework', href: 'https://langchain.com' },
-      { name: 'Vercel AI SDK', desc: 'Production AI streaming', href: 'https://sdk.vercel.ai' },
-      { name: 'Hugging Face', desc: 'Open-source model hub', href: 'https://huggingface.co' },
+      { name: 'Next.js', desc: 'App Router product UIs', href: 'https://nextjs.org' },
+      { name: 'Supabase', desc: 'Auth, Postgres, storage', href: 'https://supabase.com' },
+      { name: 'Drizzle', desc: 'Typed SQL for Postgres', href: 'https://orm.drizzle.team' },
+      { name: 'Stripe', desc: 'Payments in live products', href: 'https://stripe.com' },
     ],
   },
   {
-    category: 'Dev Productivity',
+    category: 'Delivery',
     icon: Zap,
     color: '#E5E7EB',
     items: [
-      { name: 'Cursor IDE', desc: 'AI-first code editor', href: 'https://cursor.sh' },
-      { name: 'v0.dev', desc: 'AI UI generation by Vercel', href: 'https://v0.dev' },
-      { name: 'Bolt.new', desc: 'Full-stack AI app builder', href: 'https://bolt.new' },
-      { name: 'Continue.dev', desc: 'Open-source AI coding', href: 'https://continue.dev' },
+      { name: 'Cursor', desc: 'AI-first code editor', href: 'https://cursor.com' },
+      { name: 'Vercel', desc: 'Production hosting', href: 'https://vercel.com' },
+      { name: 'GitHub', desc: 'Source and reviews', href: 'https://github.com' },
+      { name: 'Playwright', desc: 'End-to-end coverage', href: 'https://playwright.dev' },
     ],
   },
   {
-    category: 'Design & Architecture',
+    category: 'Design',
     icon: PenTool,
     color: '#A78BFA',
     items: [
-      { name: 'Figma', desc: 'Design & prototyping', href: 'https://figma.com' },
-      { name: 'Excalidraw', desc: 'Hand-drawn architecture diagrams', href: 'https://excalidraw.com' },
-      { name: 'draw.io', desc: 'Complex system diagrams', href: 'https://draw.io' },
-      { name: 'Storybook', desc: 'UI component development', href: 'https://storybook.js.org' },
+      { name: 'Figma', desc: 'Design and handoff', href: 'https://figma.com' },
+      { name: 'Tailwind CSS', desc: 'Utility-first UI', href: 'https://tailwindcss.com' },
+      { name: 'Excalidraw', desc: 'Architecture sketches', href: 'https://excalidraw.com' },
+      { name: 'Storybook', desc: 'Component isolation', href: 'https://storybook.js.org' },
     ],
   },
 ];
-
-// ─── Section Wrapper ────────────────────────────────────────────────────────────
 
 function SectionHeader({ label, title, subtitle }: { label: string; title: React.ReactNode; subtitle?: string }) {
   const ref = useRef(null);
@@ -251,8 +211,6 @@ function SectionHeader({ label, title, subtitle }: { label: string; title: React
   );
 }
 
-// ─── Domain Card ────────────────────────────────────────────────────────────────
-
 function DomainCard({ domain, index }: { domain: typeof domains[0]; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
@@ -267,38 +225,25 @@ function DomainCard({ domain, index }: { domain: typeof domains[0]; index: numbe
       className="relative rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02]"
       id={domain.id}
     >
-      {/* Top glow bar */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${domain.color}60, transparent)` }} />
 
       <div className={`flex flex-col ${isReverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
-        {/* Image side */}
-        <div className="relative lg:w-[42%] h-56 lg:h-auto overflow-hidden">
-          <img src={domain.image} alt={domain.title} className="w-full h-full object-cover opacity-40" />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(${isReverse ? '270deg' : '90deg'}, transparent 0%, #0F0F0F 90%)` }} />
-          {/* Floating stats */}
-          <div className="absolute inset-0 flex items-center justify-center gap-6 p-6">
-            {domain.stats.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.12 }}
-                className="text-center"
-              >
-                <div style={{ color: domain.color, fontFamily: 'var(--font-geist)', fontWeight: 800, fontSize: '2rem', lineHeight: 1 }}>{s.v}</div>
+        <div className="relative lg:w-[38%] min-h-[220px] overflow-hidden flex items-center justify-center" style={{ background: `${domain.color}0D` }}>
+          <div className="flex items-center justify-center gap-6 p-6">
+            {domain.stats.map((s) => (
+              <div key={s.l} className="text-center">
+                <div style={{ color: domain.color, fontFamily: 'var(--font-geist)', fontWeight: 800, fontSize: '1.6rem', lineHeight: 1 }}>{s.v}</div>
                 <div className="text-xs text-gray-400 mt-1">{s.l}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Content side */}
         <div className="flex-1 p-8 lg:p-10">
-          {/* Header */}
           <div className="flex items-start gap-4 mb-5">
             <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border"
               style={{ background: `${domain.color}15`, borderColor: `${domain.color}30` }}>
-              <domain.icon size={22} style={{ color: domain.color }} />
+              <domain.icon size={22} style={{ color: domain.color }} aria-hidden="true" />
             </div>
             <div>
               <h3 className="text-white mb-0.5" style={{ fontFamily: 'var(--font-geist)', fontWeight: 700, fontSize: '1.25rem' }}>{domain.title}</h3>
@@ -306,32 +251,23 @@ function DomainCard({ domain, index }: { domain: typeof domains[0]; index: numbe
             </div>
           </div>
 
-          {/* Impact pill */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 border"
             style={{ background: `${domain.color}0D`, borderColor: `${domain.color}25` }}>
-            <Target size={12} style={{ color: domain.color }} />
+            <Target size={12} style={{ color: domain.color }} aria-hidden="true" />
             <span className="text-xs" style={{ color: domain.color }}>{domain.impact}</span>
           </div>
 
           <p className="text-gray-400 text-sm leading-relaxed mb-6">{domain.description}</p>
 
-          {/* Capabilities grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
-            {domain.capabilities.map((cap, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.4 + i * 0.05 }}
-                className="flex items-center gap-2 text-sm text-gray-300"
-              >
+            {domain.capabilities.map((cap) => (
+              <div key={cap} className="flex items-center gap-2 text-sm text-gray-300">
                 <div className="w-1 h-1 rounded-full shrink-0" style={{ background: domain.color }} />
                 {cap}
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* Tool tags */}
           <div className="flex flex-wrap gap-2">
             {domain.tools.map((tool) => (
               <span key={tool} className="px-2.5 py-1 text-xs rounded-md border text-gray-400"
@@ -346,28 +282,25 @@ function DomainCard({ domain, index }: { domain: typeof domains[0]; index: numbe
   );
 }
 
-// ─── Impact Project Card ────────────────────────────────────────────────────────
-
 function ImpactProjectCard({ project, index }: { project: typeof impactProjects[0]; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.12 }}
-      className="relative p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.07] hover:border-[#F5C518]/20 transition-all duration-300 group"
+      className="relative p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.07] hover:border-[#F5C518]/20 transition-all duration-300"
     >
       {project.featured && (
         <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/30">
-          <span className="text-[10px] text-[#F5C518] flex items-center gap-1"><Star size={9} className="fill-[#F5C518]" /> Featured</span>
+          <span className="text-[10px] text-[#F5C518] flex items-center gap-1"><Star size={9} className="fill-[#F5C518]" aria-hidden="true" /> Featured</span>
         </div>
       )}
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Left */}
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-4">
             <span className="px-2.5 py-1 text-xs rounded-full border"
@@ -382,20 +315,32 @@ function ImpactProjectCard({ project, index }: { project: typeof impactProjects[
           </h3>
           <p className="text-gray-400 text-sm leading-relaxed mb-5">{project.description}</p>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-5">
             {project.stack.map((t) => (
               <span key={t} className="px-2.5 py-1 text-xs rounded-md bg-white/[0.04] border border-white/[0.08] text-gray-400">{t}</span>
             ))}
           </div>
+
+          <div className="flex items-center gap-3">
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
+                <Github size={14} aria-hidden="true" /> Code
+              </a>
+            )}
+            {project.live && (
+              <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-[#F5C518] hover:text-[#DEBA15] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
+                <ExternalLink size={14} aria-hidden="true" /> Live site
+              </a>
+            )}
+          </div>
         </div>
 
-        {/* Right: metrics */}
         <div className="md:w-52 shrink-0">
           <div className="h-full rounded-xl bg-white/[0.03] border border-white/[0.06] p-5 flex flex-col justify-center gap-5">
-            {project.metrics.map((m, i) => (
-              <div key={i} className="flex items-center gap-3">
+            {project.metrics.map((m) => (
+              <div key={m.label} className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-[#F5C518]/10 border border-[#F5C518]/20 flex items-center justify-center shrink-0">
-                  <m.icon size={14} className="text-[#F5C518]" />
+                  <m.icon size={14} className="text-[#F5C518]" aria-hidden="true" />
                 </div>
                 <div>
                   <div className="text-white text-base" style={{ fontFamily: 'var(--font-geist)', fontWeight: 700 }}>{m.value}</div>
@@ -406,54 +351,46 @@ function ImpactProjectCard({ project, index }: { project: typeof impactProjects[
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
-
-// ─── Side Project Card ─────────────────────────────────────────────────────────
 
 function SideProjectCard({ project, index }: { project: typeof sideProjects[0]; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-40px' });
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -4 }}
       className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] hover:border-[#F5C518]/20 transition-all duration-300 group flex flex-col"
     >
       <div className="flex items-start justify-between mb-3">
-        <div className="text-2xl">{project.emoji}</div>
+        <h4 className="text-white group-hover:text-[#F5C518] transition-colors" style={{ fontWeight: 600 }}>{project.title}</h4>
         <div className="flex gap-2">
           {project.links.github && (
-            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-gray-600 hover:text-white transition-colors">
-              <Github size={14} />
+            <a href={project.links.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} source code`} className="p-1.5 rounded-lg text-gray-600 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
+              <Github size={14} aria-hidden="true" />
             </a>
           )}
           {project.links.live && (
-            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-gray-600 hover:text-[#F5C518] transition-colors">
-              <ExternalLink size={14} />
+            <a href={project.links.live} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live site`} className="p-1.5 rounded-lg text-gray-600 hover:text-[#F5C518] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
+              <ExternalLink size={14} aria-hidden="true" />
             </a>
           )}
         </div>
       </div>
-
-      <h4 className="text-white mb-2 group-hover:text-[#F5C518] transition-colors" style={{ fontWeight: 600 }}>{project.title}</h4>
       <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">{project.description}</p>
-
       <div className="flex flex-wrap gap-1.5">
         {project.stack.map((t) => (
           <span key={t} className="px-2 py-0.5 text-[10px] rounded border border-white/[0.08] text-gray-500">{t}</span>
         ))}
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
-
-// ─── Resource Card ─────────────────────────────────────────────────────────────
 
 function ResourceCard({ res, index }: { res: typeof resources[0]; index: number }) {
   const ref = useRef(null);
@@ -470,25 +407,24 @@ function ResourceCard({ res, index }: { res: typeof resources[0]; index: number 
       <div className="flex items-center gap-3 mb-5">
         <div className="w-9 h-9 rounded-xl flex items-center justify-center border"
           style={{ background: `${res.color}15`, borderColor: `${res.color}30` }}>
-          <res.icon size={16} style={{ color: res.color }} />
+          <res.icon size={16} style={{ color: res.color }} aria-hidden="true" />
         </div>
         <h4 className="text-white text-sm" style={{ fontWeight: 600 }}>{res.category}</h4>
       </div>
-
       <div className="space-y-3">
-        {res.items.map((item, i) => (
+        {res.items.map((item) => (
           <a
-            key={i}
+            key={item.name}
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start justify-between gap-3 group"
+            className="flex items-start justify-between gap-3 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] rounded"
           >
             <div>
               <p className="text-gray-300 text-sm group-hover:text-white transition-colors" style={{ fontWeight: 500 }}>{item.name}</p>
               <p className="text-gray-600 text-xs">{item.desc}</p>
             </div>
-            <ChevronRight size={14} className="text-gray-700 group-hover:text-[#F5C518] transition-colors mt-0.5 shrink-0" />
+            <ChevronRight size={14} className="text-gray-700 group-hover:text-[#F5C518] transition-colors mt-0.5 shrink-0" aria-hidden="true" />
           </a>
         ))}
       </div>
@@ -496,19 +432,17 @@ function ResourceCard({ res, index }: { res: typeof resources[0]; index: number 
   );
 }
 
-// ─── Architecture Diagram ──────────────────────────────────────────────────────
-
 function ArchDiagram() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
 
   const nodes = [
     { id: 'client', label: 'Client', sub: 'Next.js / React', x: '50%', y: '8%', color: '#F5C518', icon: Globe },
-    { id: 'edge', label: 'Edge Layer', sub: 'Vercel Edge / CDN', x: '50%', y: '28%', color: '#E5E7EB', icon: Cloud },
-    { id: 'api', label: 'API Gateway', sub: 'REST / GraphQL', x: '25%', y: '50%', color: '#F5C518', icon: Workflow },
-    { id: 'ai', label: 'AI Service', sub: 'OpenAI + LangChain', x: '75%', y: '50%', color: '#A78BFA', icon: Brain },
-    { id: 'db', label: 'Database', sub: 'PostgreSQL + Redis', x: '25%', y: '75%', color: '#34D399', icon: Database },
-    { id: 'vector', label: 'Vector DB', sub: 'Pinecone / pgvector', x: '75%', y: '75%', color: '#A78BFA', icon: Braces },
+    { id: 'edge', label: 'Hosting', sub: 'Vercel / CDN', x: '50%', y: '28%', color: '#E5E7EB', icon: Cloud },
+    { id: 'api', label: 'API', sub: 'NestJS / Route handlers', x: '25%', y: '50%', color: '#F5C518', icon: Workflow },
+    { id: 'auth', label: 'Auth', sub: 'Supabase / RBAC', x: '75%', y: '50%', color: '#A78BFA', icon: Brain },
+    { id: 'db', label: 'Database', sub: 'PostgreSQL / MongoDB', x: '25%', y: '75%', color: '#34D399', icon: Database },
+    { id: 'pay', label: 'Payments', sub: 'Stripe / Paystack', x: '75%', y: '75%', color: '#A78BFA', icon: Braces },
   ];
 
   return (
@@ -519,17 +453,8 @@ function ArchDiagram() {
       transition={{ duration: 0.8 }}
       className="relative p-8 rounded-2xl bg-white/[0.02] border border-[#F5C518]/15 overflow-hidden"
       style={{ minHeight: 380 }}
+      aria-hidden="true"
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="arch-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#F5C518" strokeWidth="0.5" />
-          </pattern></defs>
-          <rect width="100%" height="100%" fill="url(#arch-grid)" />
-        </svg>
-      </div>
-
-      {/* SVG Lines */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
         {[
           ['50%', '14%', '50%', '30%'],
@@ -551,7 +476,6 @@ function ArchDiagram() {
         ))}
       </svg>
 
-      {/* Nodes */}
       {nodes.map((node, i) => (
         <motion.div
           key={node.id}
@@ -561,9 +485,8 @@ function ArchDiagram() {
           className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
           style={{ left: node.x, top: node.y }}
         >
-          <div className="flex flex-col items-center gap-1.5 cursor-default">
-            <motion.div
-              whileHover={{ scale: 1.1 }}
+          <div className="flex flex-col items-center gap-1.5">
+            <div
               className="w-12 h-12 rounded-xl flex items-center justify-center border backdrop-blur"
               style={{
                 background: `${node.color}12`,
@@ -572,7 +495,7 @@ function ArchDiagram() {
               }}
             >
               <node.icon size={18} style={{ color: node.color }} />
-            </motion.div>
+            </div>
             <div className="text-center">
               <p className="text-white text-xs whitespace-nowrap" style={{ fontWeight: 600 }}>{node.label}</p>
               <p className="text-gray-600 whitespace-nowrap" style={{ fontSize: '0.6rem' }}>{node.sub}</p>
@@ -584,14 +507,12 @@ function ArchDiagram() {
   );
 }
 
-// ─── Main Page ─────────────────────────────────────────────────────────────────
-
 export function Expertise() {
   return (
     <div className="min-h-screen bg-[#0F0F0F]">
+      <SEO title="Expertise | Anderson Lebon, Full-Stack Developer" />
       <Navbar />
 
-      {/* ── Hero ── */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <svg className="absolute w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
@@ -608,70 +529,43 @@ export function Expertise() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex justify-center mb-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#F5C518]/30 bg-[#F5C518]/5">
-                <Sparkles size={12} className="text-[#F5C518]" />
-                <span className="text-xs text-[#F5C518]">Rare skill combination</span>
+                <Sparkles size={12} className="text-[#F5C518]" aria-hidden="true" />
+                <span className="text-xs text-[#F5C518]">Verified capabilities</span>
               </div>
             </div>
 
             <h1 className="text-center mb-6" style={{ fontFamily: 'var(--font-geist)', fontWeight: 800, lineHeight: 1.05 }}>
-              <span className="block text-5xl md:text-7xl text-white">AI × Design</span>
-              <span className="block text-5xl md:text-7xl text-[#F5C518] mt-1">× Architecture</span>
+              <span className="block text-5xl md:text-7xl text-white">How I ship</span>
+              <span className="block text-5xl md:text-7xl text-[#F5C518] mt-1">production software</span>
             </h1>
 
             <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Most developers specialize in one layer. I operate across all three — building AI-powered products,
-              designing the interfaces people love, and architecting the systems they trust.
+              Full-stack developer in Montreal, currently at Aspyn AI. This page covers tools and products I can point to: live sites, public repositories, and public-safe summaries of private work.
             </p>
 
-            {/* Domain quick-jump pills */}
             <div className="flex flex-wrap justify-center gap-3">
               {domains.map((d) => (
-                <motion.a
+                <a
                   key={d.id}
                   href={`#${d.id}`}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
                   onClick={(e) => { e.preventDefault(); document.getElementById(d.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' }); }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full border text-sm transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full border text-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
                   style={{ borderColor: `${d.color}30`, background: `${d.color}08`, color: d.color }}
                 >
-                  <span>{d.emoji}</span>
-                  {d.title.split(' ')[0]}
-                </motion.a>
+                  {d.title}
+                </a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Impact bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {[
-              { v: '6+', l: 'AI Products Shipped', icon: Brain, color: '#F5C518' },
-              { v: '3', l: 'Design Systems Built', icon: PenTool, color: '#A78BFA' },
-              { v: '1M+', l: 'Req/day Architectured', icon: Layers, color: '#34D399' },
-              { v: '60%', l: 'Dev Speed with Cursor', icon: Zap, color: '#E5E7EB' },
-            ].map((s, i) => (
-              <div key={i} className="p-5 rounded-2xl text-center border border-white/[0.07] bg-white/[0.02]">
-                <s.icon size={20} className="mx-auto mb-2" style={{ color: s.color }} />
-                <div style={{ color: s.color, fontFamily: 'var(--font-geist)', fontWeight: 800, fontSize: '1.75rem', lineHeight: 1 }}>{s.v}</div>
-                <div className="text-xs text-gray-500 mt-1">{s.l}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* ── Domains ── */}
       <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto px-6 space-y-8">
           <SectionHeader
             label="Expertise"
-            title={<>Four domains, <span className="text-[#F5C518]">one mindset</span></>}
-            subtitle="Each pillar reinforces the others — I design with AI, build with AI, and architect for AI."
+            title={<>Four areas, <span className="text-[#F5C518]">one delivery loop</span></>}
+            subtitle="Product engineering, AI-assisted development, interface implementation, and the architecture needed to keep a product running."
           />
           {domains.map((domain, i) => (
             <DomainCard key={domain.id} domain={domain} index={i} />
@@ -679,78 +573,62 @@ export function Expertise() {
         </div>
       </section>
 
-      {/* ── Architecture Diagram ── */}
       <section className="py-20 bg-[#0F0F0F]">
         <div className="max-w-4xl mx-auto px-6">
           <SectionHeader
-            label="System Design"
-            title={<>How I architect <span className="text-[#F5C518]">AI systems</span></>}
-            subtitle="A reference architecture I use for full-stack AI products — from edge to vector store."
+            label="System shape"
+            title={<>How the products <span className="text-[#F5C518]">are structured</span></>}
+            subtitle="A typical layout for the live work in this portfolio: client, API, auth, data, and payments."
           />
-          <div className="mb-6">
-            <ArchDiagram />
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center text-xs text-gray-600 mt-4"
-          >
-            Typical AI SaaS architecture — each project is tailored based on scale, budget, and team size.
-          </motion.p>
+          <ArchDiagram />
         </div>
       </section>
 
-      {/* ── Impact Projects ── */}
       <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-5xl mx-auto px-6">
           <SectionHeader
-            label="Impact Work"
-            title={<>High-impact <span className="text-[#F5C518]">projects</span></>}
-            subtitle="Real work shipped to production that demonstrates the combination of these four domains."
+            label="Evidence"
+            title={<>Projects that <span className="text-[#F5C518]">show the work</span></>}
+            subtitle="Live sites and public repositories. Private product internals stay out of this page."
           />
           <div className="space-y-6">
             {impactProjects.map((project, i) => (
-              <ImpactProjectCard key={i} project={project} index={i} />
+              <ImpactProjectCard key={project.title} project={project} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Side Projects ── */}
       <section className="py-20 bg-[#0F0F0F]">
         <div className="max-w-5xl mx-auto px-6">
           <SectionHeader
-            label="Side Projects"
-            title={<>Building in <span className="text-[#F5C518]">public</span></>}
-            subtitle="Experiments, tools, and micro-products I build to explore new ideas at the intersection of AI and dev tools."
+            label="More work"
+            title={<>Also in <span className="text-[#F5C518]">production</span></>}
+            subtitle="Booking, sports tracking, and a local-government prototype."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sideProjects.map((project, i) => (
-              <SideProjectCard key={i} project={project} index={i} />
+              <SideProjectCard key={project.title} project={project} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Resources ── */}
       <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-5xl mx-auto px-6">
           <SectionHeader
-            label="Resources"
-            title={<>My go-to <span className="text-[#F5C518]">toolkit</span></>}
-            subtitle="Tools, frameworks, and platforms I actively use and recommend."
+            label="Toolkit"
+            title={<>Tools I <span className="text-[#F5C518]">use</span></>}
+            subtitle="The stack behind the projects above."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {resources.map((res, i) => (
-              <ResourceCard key={i} res={res} index={i} />
+              <ResourceCard key={res.category} res={res} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
       <section className="py-20 bg-[#0F0F0F]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <motion.div
@@ -761,41 +639,20 @@ export function Expertise() {
             className="relative p-10 md:p-14 rounded-2xl border border-[#F5C518]/20 overflow-hidden"
             style={{ background: 'rgba(245,197,24,0.03)' }}
           >
-            <div className="absolute inset-0 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(245,197,24,0.06) 0%, transparent 70%)' }} />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518]/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518]/30 to-transparent" />
-
             <div className="relative">
-              <div className="text-3xl mb-4">🚀</div>
               <h2 className="text-3xl md:text-4xl text-white mb-4" style={{ fontFamily: 'var(--font-geist)', fontWeight: 700 }}>
-                Let's build something
-                <span className="text-[#F5C518]"> powerful</span> together
+                Let's talk about a <span className="text-[#F5C518]">role or project</span>
               </h2>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Whether you need an AI-powered product, a design system, a robust architecture, or all three — I can take it from whiteboard to production.
+                Email or LinkedIn is the fastest way to reach me. I can walk through the live products above and the work I am doing at Aspyn AI at a public-safe level.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link to="/#contact">
-                  <motion.button
-                    whileHover={{ scale: 1.03, boxShadow: '0 0 30px rgba(245,197,24,0.3)' }}
-                    whileTap={{ scale: 0.97 }}
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F5C518] text-black hover:bg-[#DEBA15] transition-all"
-                    style={{ fontWeight: 700 }}
-                  >
-                    Start a Project
-                    <ArrowRight size={16} />
-                  </motion.button>
+                <Link to="/#contact" className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F5C518] text-black hover:bg-[#DEBA15] transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5C518]" style={{ fontWeight: 700 }}>
+                  Contact Me
+                  <ArrowRight size={16} aria-hidden="true" />
                 </Link>
-                <Link to="/">
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-[#F5C518]/40 text-[#F5C518] hover:bg-[#F5C518]/8 transition-all"
-                    style={{ fontWeight: 600 }}
-                  >
-                    Back to Portfolio
-                  </motion.button>
+                <Link to="/" className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-[#F5C518]/40 text-[#F5C518] hover:bg-[#F5C518]/8 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5C518]" style={{ fontWeight: 600 }}>
+                  Back to Portfolio
                 </Link>
               </div>
             </div>

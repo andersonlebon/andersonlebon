@@ -69,7 +69,7 @@ export function Experience() {
                             href={job.companyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#F5C518]/80 hover:text-[#F5C518] hover:underline"
+                            className="text-[#F5C518]/80 hover:text-[#F5C518] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
                           >
                             {job.company}
                           </a>

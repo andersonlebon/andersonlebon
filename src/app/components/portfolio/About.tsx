@@ -53,7 +53,7 @@ export function About() {
               </p>
               <p className="text-gray-400 leading-relaxed text-sm pl-6 mt-4">
                 Currently at{' '}
-                <a href="https://aspynai.com/" target="_blank" rel="noopener noreferrer" className="text-[#F5C518] hover:underline">
+                <a href="https://aspynai.com/" target="_blank" rel="noopener noreferrer" className="text-[#F5C518] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
                   Aspyn AI
                 </a>
                 , building AI operator software as a full-stack developer and software engineer.
@@ -74,7 +74,7 @@ export function About() {
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-gray-500 text-sm w-20">Email</span>
-                <a href={`mailto:${settings.email}`} className="text-[#F5C518] text-sm hover:underline">
+                <a href={`mailto:${settings.email}`} className="text-[#F5C518] text-sm hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
                   {settings.email}
                 </a>
               </div>

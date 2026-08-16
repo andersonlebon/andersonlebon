@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
-import { Github, Linkedin, Menu, X, LayoutDashboard, Sparkles, Rocket, Heart } from 'lucide-react';
+import { Github, Linkedin, Menu, X, Sparkles } from 'lucide-react';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 const navLinks = [
@@ -21,17 +21,15 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const location = useLocation();
   const isExpertisePage = location.pathname === '/expertise';
-  const isServicesPage = location.pathname === '/services';
-  const isFaithPage = location.pathname === '/faith';
-  const isSpecialPage = isExpertisePage || isServicesPage || isFaithPage;
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 20);
   });
 
   useEffect(() => {
+    if (isExpertisePage) return;
     const handleScroll = () => {
-      const sections = navLinks.map(l => l.href.replace('#', ''));
+      const sections = navLinks.map((l) => l.href.replace('#', ''));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && window.scrollY >= el.offsetTop - 100) {
@@ -42,9 +40,13 @@ export function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isExpertisePage]);
 
   const scrollTo = (href: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/${href}`;
+      return;
+    }
     document.getElementById(href.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' });
     setMobileOpen(false);
   };
@@ -62,8 +64,7 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/">
+          <Link to="/" aria-label="Anderson home">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -77,13 +78,12 @@ export function Navbar() {
             </motion.div>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
-            {!isSpecialPage && navLinks.map((link) => (
+            {!isExpertisePage && navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className={`relative px-4 py-2 text-sm rounded-lg transition-colors duration-200 ${
+                className={`relative px-4 py-2 text-sm rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
                   activeSection === link.href.replace('#', '')
                     ? 'text-[#F5C518]'
                     : 'text-gray-400 hover:text-white'
@@ -100,75 +100,52 @@ export function Navbar() {
               </button>
             ))}
 
-            {/* Special Pages Links */}
             <Link
               to="/expertise"
-              className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm transition-all duration-200 ${
+              className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
                 isExpertisePage
                   ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
                   : 'text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8'
               }`}
             >
-              <Sparkles size={13} />
+              <Sparkles size={13} aria-hidden="true" />
               Expertise
-            </Link>
-
-            <Link
-              to="/services"
-              className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm transition-all duration-200 ${
-                isServicesPage
-                  ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
-                  : 'text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8'
-              }`}
-            >
-              <Rocket size={13} />
-              Services
-            </Link>
-
-            <Link
-              to="/faith"
-              className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm transition-all duration-200 ${
-                isFaithPage
-                  ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
-                  : 'text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8'
-              }`}
-            >
-              <Heart size={13} />
-              Faith
             </Link>
           </div>
 
-          {/* Social + Admin */}
           <div className="hidden md:flex items-center gap-2">
             <a
               href={settings.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8 transition-all duration-200"
+              aria-label="Anderson on GitHub"
+              className="p-2 rounded-lg text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
             >
-              <Github size={18} />
+              <Github size={18} aria-hidden="true" />
             </a>
             <a
               href={settings.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8 transition-all duration-200"
+              aria-label="Anderson on LinkedIn"
+              className="p-2 rounded-lg text-gray-400 hover:text-[#F5C518] hover:bg-[#F5C518]/8 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
             >
-              <Linkedin size={18} />
+              <Linkedin size={18} aria-hidden="true" />
             </a>
           </div>
 
-          {/* Mobile menu button */}
           <button
+            type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-gray-400 hover:text-[#F5C518]"
+            aria-expanded={mobileOpen}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            className="md:hidden p-2 text-gray-400 hover:text-[#F5C518] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <motion.div
         initial={false}
         animate={{ opacity: mobileOpen ? 1 : 0, y: mobileOpen ? 0 : -20 }}
@@ -176,11 +153,11 @@ export function Navbar() {
         className="fixed top-16 left-0 right-0 z-40 bg-[#0F0F0F]/98 backdrop-blur-xl border-b border-[#F5C518]/10 md:hidden"
       >
         <div className="px-6 py-4 flex flex-col gap-1">
-          {!isSpecialPage && navLinks.map((link) => (
+          {!isExpertisePage && navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className={`px-4 py-3 text-left text-sm rounded-lg transition-all ${
+              className={`px-4 py-3 text-left text-sm rounded-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
                 activeSection === link.href.replace('#', '')
                   ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
                   : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -189,52 +166,26 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
-          
+
           <Link
             to="/expertise"
             onClick={() => setMobileOpen(false)}
-            className={`flex items-center gap-2 px-4 py-3 text-sm rounded-lg ${
+            className={`flex items-center gap-2 px-4 py-3 text-sm rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518] ${
               isExpertisePage
                 ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
                 : 'text-gray-300 hover:text-white hover:bg-white/5'
             }`}
           >
-            <Sparkles size={14} />
+            <Sparkles size={14} aria-hidden="true" />
             Expertise
           </Link>
 
-          <Link
-            to="/services"
-            onClick={() => setMobileOpen(false)}
-            className={`flex items-center gap-2 px-4 py-3 text-sm rounded-lg ${
-              isServicesPage
-                ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
-                : 'text-gray-300 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Rocket size={14} />
-            Services
-          </Link>
-
-          <Link
-            to="/faith"
-            onClick={() => setMobileOpen(false)}
-            className={`flex items-center gap-2 px-4 py-3 text-sm rounded-lg ${
-              isFaithPage
-                ? 'text-[#F5C518] bg-[#F5C518]/8 border border-[#F5C518]/20'
-                : 'text-gray-300 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Heart size={14} />
-            Faith Journey
-          </Link>
-
           <div className="flex items-center gap-3 px-4 pt-3 border-t border-[#F5C518]/10 mt-2">
-            <a href={settings.githubUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#F5C518]">
-              <Github size={18} />
+            <a href={settings.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="Anderson on GitHub" className="text-gray-400 hover:text-[#F5C518]">
+              <Github size={18} aria-hidden="true" />
             </a>
-            <a href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#F5C518]">
-              <Linkedin size={18} />
+            <a href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="Anderson on LinkedIn" className="text-gray-400 hover:text-[#F5C518]">
+              <Linkedin size={18} aria-hidden="true" />
             </a>
           </div>
         </div>

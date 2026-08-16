@@ -64,7 +64,7 @@ export function GitHubActivity() {
               href={settings.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-[#F5C518] hover:underline"
+              className="text-xs text-[#F5C518] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]"
             >
               View profile
             </a>
@@ -73,11 +73,15 @@ export function GitHubActivity() {
             <img
               src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=andersonlebon&theme=tokyonight"
               alt="Anderson Lebon GitHub stats"
+              loading="lazy"
+              decoding="async"
               className="w-full max-w-[410px] h-auto"
             />
             <img
               src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=andersonlebon&theme=tokyonight"
               alt="Anderson Lebon top languages"
+              loading="lazy"
+              decoding="async"
               className="w-full max-w-[410px] h-auto"
             />
           </div>
