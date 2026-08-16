@@ -9,9 +9,9 @@ interface SEOProps {
 }
 
 export function SEO({ 
-  title = "Anderson - Full-Stack Developer & AI Expert",
-  description = "Professional Full-Stack Developer with 5+ years of experience specializing in React, Node.js, AI integration, and modern web applications. Available for hire - Get your website + admin dashboard in 3 days!",
-  image = "https://i.imgur.com/your-preview-image.png", // You'll need to upload your photo here
+  title = "Anderson Lebon - Full-Stack Developer",
+  description = "Portfolio of Anderson Lebon, a full-stack developer in Montreal-Nord, Quebec. Currently at Aspyn AI, building production web apps with React, Next.js, and TypeScript.",
+  image = "https://www.andersone.site/og-image.png",
   url
 }: SEOProps) {
   const location = useLocation();
@@ -37,7 +37,7 @@ export function SEO({
 
     // Basic Meta Tags
     updateMetaTag('description', description, true);
-    updateMetaTag('keywords', 'full-stack developer, AI expert, web development, React, Node.js, portfolio, Anderson, hire developer', true);
+    updateMetaTag('keywords', 'full-stack developer, React, Next.js, TypeScript, Node.js, Anderson Lebon, Montreal, Aspyn AI', true);
     updateMetaTag('author', 'Anderson', true);
 
     // Open Graph / Facebook
@@ -56,7 +56,7 @@ export function SEO({
     updateMetaTag('twitter:title', title, true);
     updateMetaTag('twitter:description', description, true);
     updateMetaTag('twitter:image', image, true);
-    updateMetaTag('twitter:creator', '@anderson', true); // Update with your Twitter handle
+    updateMetaTag('twitter:creator', '@andersonlebon', true);
 
     // WhatsApp specific
     updateMetaTag('og:image:type', 'image/png');

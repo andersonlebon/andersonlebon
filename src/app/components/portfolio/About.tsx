@@ -4,12 +4,12 @@ import { Users, Cloud, Code2, Globe, Lightbulb, Layers } from 'lucide-react';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 const highlights = [
-  { icon: Users, label: 'Team Leadership', description: 'Led cross-functional teams of 5+ engineers' },
-  { icon: Cloud, label: 'Cloud Infrastructure', description: 'AWS, Docker, CI/CD pipelines' },
-  { icon: Code2, label: 'Full-Stack Dev', description: 'React, Node.js, Rails, Python' },
+  { icon: Users, label: 'Product Delivery', description: 'Shipped learning, booking, and operations platforms' },
+  { icon: Cloud, label: 'Cloud Infrastructure', description: 'AWS, Docker, CI/CD, and Vercel' },
+  { icon: Code2, label: 'Full-Stack Dev', description: 'React, Next.js, Node.js, Rails' },
   { icon: Globe, label: 'Remote Collaboration', description: 'Distributed teams across time zones' },
-  { icon: Lightbulb, label: 'Open-Source Mindset', description: 'Contributing to and building open-source projects' },
-  { icon: Layers, label: 'Scalable Architecture', description: 'Designing systems that grow with the business' },
+  { icon: Lightbulb, label: 'Open-Source Mindset', description: 'Public repos, prototypes, and production sites' },
+  { icon: Layers, label: 'Scalable Architecture', description: 'Auth, payments, dashboards, and data models' },
 ];
 
 export function About() {
@@ -51,12 +51,19 @@ export function About() {
               <p className="text-gray-300 leading-relaxed text-lg pl-6">
                 {settings.bio}
               </p>
+              <p className="text-gray-400 leading-relaxed text-sm pl-6 mt-4">
+                Currently at{' '}
+                <a href="https://aspynai.com/" target="_blank" rel="noopener noreferrer" className="text-[#F5C518] hover:underline">
+                  Aspyn AI
+                </a>
+                , building AI operator software as a full-stack developer and software engineer.
+              </p>
             </div>
 
             <div className="mt-8 pl-6 space-y-4">
               <div className="flex items-center gap-3">
                 <span className="text-gray-500 text-sm w-20">Location</span>
-                <span className="text-gray-300 text-sm">Remote — Worldwide</span>
+                <span className="text-gray-300 text-sm">{settings.location}</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-gray-500 text-sm w-20">Status</span>

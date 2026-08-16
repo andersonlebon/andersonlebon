@@ -1,12 +1,57 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
-import { usePortfolio } from '../../context/PortfolioContext';
+import { Project, usePortfolio } from '../../context/PortfolioContext';
+
+function ProjectLinks({ project, compact = false }: { project: Project; compact?: boolean }) {
+  const linkClass = compact
+    ? 'flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors'
+    : 'inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[#F5C518]/30 text-[#F5C518] text-sm hover:bg-[#F5C518]/10 transition-all';
+
+  return (
+    <div className="flex items-center gap-3">
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={compact ? linkClass : `${linkClass} text-gray-300 border-white/15 hover:text-white hover:border-white/30`}>
+          <Github size={compact ? 14 : 16} />
+          Code
+        </a>
+      )}
+      {project.liveUrl && (
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={compact ? 'flex items-center gap-1.5 text-xs text-[#F5C518] hover:text-[#DEBA15] transition-colors' : linkClass}
+        >
+          <ExternalLink size={compact ? 14 : 16} />
+          Live site
+        </a>
+      )}
+    </div>
+  );
+}
+
+function TechTags({ tags }: { tags: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {tags.map((tech) => (
+        <span
+          key={tech}
+          className="px-2.5 py-1 text-xs rounded-md bg-[#F5C518]/8 border border-[#F5C518]/20 text-[#F5C518]/80"
+        >
+          {tech}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export function Projects() {
   const { projects } = usePortfolio();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const featured = projects.find((project) => project.featured) || projects[0];
+  const rest = projects.filter((project) => project.id !== featured?.id);
 
   return (
     <section id="projects" className="py-28 bg-[#0A0A0A] relative overflow-hidden">
@@ -26,55 +71,56 @@ export function Projects() {
             Featured projects
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            A selection of projects I've built from scratch and shipped to production.
+            Production work from public repositories, live deployments, and public-safe summaries of larger private products.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
+        {featured && (
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mb-10 rounded-2xl overflow-hidden bg-white/[0.02] border border-[#F5C518]/25"
+          >
+            <div className="grid lg:grid-cols-2">
+              <div className="relative min-h-[260px] lg:min-h-[420px] overflow-hidden">
+                <img src={featured.imageUrl} alt={featured.title} className="w-full h-full object-cover object-top" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent lg:bg-gradient-to-r" />
+              </div>
+              <div className="p-8 lg:p-10 flex flex-col justify-center">
+                <p className="text-xs text-[#F5C518] tracking-widest uppercase mb-3">Flagship case study</p>
+                <h3 className="text-white text-2xl md:text-3xl mb-4" style={{ fontFamily: 'var(--font-geist)', fontWeight: 700 }}>
+                  {featured.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed mb-6">{featured.description}</p>
+                <div className="mb-6">
+                  <TechTags tags={featured.techStack} />
+                </div>
+                <ProjectLinks project={featured} />
+              </div>
+            </div>
+          </motion.article>
+        )}
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {rest.map((project, i) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.6, delay: 0.15 + i * 0.08 }}
               whileHover={{ y: -6 }}
               className="group relative rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.07] hover:border-[#F5C518]/30 transition-all duration-500"
             >
-              {/* Project image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-52 overflow-hidden">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
-
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-[#F5C518]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-black/60 backdrop-blur border border-[#F5C518]/30 text-[#F5C518] hover:bg-[#F5C518]/20 transition-all"
-                    >
-                      <Github size={18} />
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-black/60 backdrop-blur border border-[#F5C518]/30 text-[#F5C518] hover:bg-[#F5C518]/20 transition-all"
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
-                </div>
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-white" style={{ fontSize: '1rem', fontWeight: 600 }}>
@@ -83,46 +129,16 @@ export function Projects() {
                   <ArrowUpRight size={16} className="text-gray-600 group-hover:text-[#F5C518] transition-colors shrink-0 ml-2" />
                 </div>
 
-                <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">
                   {project.description}
                 </p>
 
-                {/* Tech stack tags */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 text-xs rounded-md bg-[#F5C518]/8 border border-[#F5C518]/20 text-[#F5C518]/80"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="mb-5">
+                  <TechTags tags={project.techStack} />
                 </div>
 
-                {/* Action buttons */}
-                <div className="flex items-center gap-3 pt-3 border-t border-white/5">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
-                    >
-                      <Github size={14} />
-                      Code
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-[#F5C518] hover:text-[#DEBA15] transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                      Live Demo
-                    </a>
-                  )}
+                <div className="pt-3 border-t border-white/5">
+                  <ProjectLinks project={project} compact />
                 </div>
               </div>
             </motion.div>

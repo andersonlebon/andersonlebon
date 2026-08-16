@@ -45,8 +45,7 @@ export function AIExpertiseBanner() {
                 AI × Design × Architecture
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed max-w-md">
-                I work at the rare intersection of AI engineering, design systems, and cloud architecture.
-                See my deep expertise, impact projects, and side projects.
+                I currently work at Aspyn AI and build production web apps across learning platforms, booking products, and operational dashboards.
               </p>
             </div>
 

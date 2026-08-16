@@ -17,6 +17,7 @@ function ExperienceModal({
     role: exp.role || '',
     duration: exp.duration || '',
     description: exp.description || [''],
+    companyUrl: exp.companyUrl || '',
   });
 
   const updateDesc = (i: number, val: string) => {
@@ -80,6 +81,16 @@ function ExperienceModal({
               value={form.role}
               onChange={(e) => setForm({ ...form, role: e.target.value })}
               placeholder="Full-Stack Developer"
+              className="w-full px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-blue-500/40 transition-colors"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Company URL</label>
+            <input
+              value={form.companyUrl}
+              onChange={(e) => setForm({ ...form, companyUrl: e.target.value })}
+              placeholder="https://..."
               className="w-full px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-blue-500/40 transition-colors"
             />
           </div>

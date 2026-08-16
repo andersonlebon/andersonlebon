@@ -16,18 +16,22 @@ export function Contact() {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
     setLoading(true);
-    setTimeout(() => {
-      addMessage(form);
-      setSent(true);
-      setLoading(false);
-      setForm({ name: '', email: '', message: '' });
-    }, 1000);
+    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
+    const body = encodeURIComponent(`${form.message}\n\nFrom: ${form.name} <${form.email}>`);
+    window.location.href = `mailto:${settings.email}?subject=${subject}&body=${body}`;
+    addMessage(form);
+    setSent(true);
+    setLoading(false);
+    setForm({ name: '', email: '', message: '' });
   };
+
+  const githubHandle = settings.githubUrl.replace(/^https?:\/\/(www\.)?github\.com\//, '').replace(/\/$/, '');
+  const linkedinHandle = settings.linkedinUrl.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '').replace(/\/$/, '');
 
   const socials = [
     { icon: Mail, label: 'Email', value: settings.email, href: `mailto:${settings.email}`, gold: true },
-    { icon: Github, label: 'GitHub', value: 'github.com/anderson', href: settings.githubUrl, gold: false },
-    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/anderson', href: settings.linkedinUrl, gold: false },
+    { icon: Github, label: 'GitHub', value: `github.com/${githubHandle}`, href: settings.githubUrl, gold: false },
+    { icon: Linkedin, label: 'LinkedIn', value: `linkedin.com/in/${linkedinHandle}`, href: settings.linkedinUrl, gold: false },
   ];
 
   return (
@@ -108,8 +112,10 @@ export function Contact() {
                 <div className="w-16 h-16 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/30 flex items-center justify-center mb-4">
                   <CheckCircle size={32} className="text-[#F5C518]" />
                 </div>
-                <h3 className="text-white mb-2" style={{ fontWeight: 600 }}>Message sent!</h3>
-                <p className="text-gray-400 text-sm mb-6">Thanks for reaching out. I'll get back to you soon.</p>
+                <h3 className="text-white mb-2" style={{ fontWeight: 600 }}>Email client opened</h3>
+                <p className="text-gray-400 text-sm mb-6">
+                  This form opens your email app so the message reaches {settings.email}. If nothing opened, email me directly.
+                </p>
                 <button
                   onClick={() => setSent(false)}
                   className="px-4 py-2 text-sm text-[#F5C518] border border-[#F5C518]/30 rounded-lg hover:bg-[#F5C518]/10 transition-colors"

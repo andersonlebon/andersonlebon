@@ -21,21 +21,19 @@ const domains = [
     subtitle: 'Prompt Engineer · API Integrator · AI Product Builder',
     color: '#F5C518',
     glow: 'rgba(245,197,24,0.12)',
-    impact: 'Built 6+ AI-powered products used by 10,000+ users',
+    impact: 'Integrating LLMs into production product workflows',
     description:
-      'Deep expertise integrating large language models into real-world products. From prompt engineering and fine-tuning to RAG pipelines and AI agent orchestration — I bridge the gap between model capability and user impact.',
+      'Hands-on experience using large language models in product work: prompt design, API integration, and shipping AI-assisted features without treating the model as the whole product.',
     capabilities: [
       'GPT-4 / GPT-4o API integration',
       'Prompt engineering & chain-of-thought',
       'RAG pipelines with vector databases',
       'AI agent design & orchestration',
-      'Fine-tuning on custom datasets',
-      'LangChain / LlamaIndex workflows',
       'Streaming & real-time AI responses',
       'Content moderation & safety layers',
     ],
-    tools: ['OpenAI API', 'LangChain', 'Pinecone', 'Supabase pgvector', 'LlamaIndex', 'Hugging Face', 'Vercel AI SDK', 'Claude'],
-    stats: [{ v: '6+', l: 'AI Products' }, { v: '10K+', l: 'End Users' }, { v: '4M+', l: 'AI Tokens/mo' }],
+    tools: ['OpenAI API', 'LangChain', 'Supabase pgvector', 'Vercel AI SDK', 'Claude'],
+    stats: [{ v: 'AI', l: 'Product work' }, { v: 'RAG', l: 'Pipelines' }, { v: 'APIs', l: 'Integrations' }],
     image: 'https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
   },
   {
@@ -46,9 +44,9 @@ const domains = [
     subtitle: 'AI Pair Programmer · Context Engineer · 10× Developer',
     color: '#E5E7EB',
     glow: 'rgba(229,231,235,0.08)',
-    impact: 'Reduced feature delivery time by 60% using AI-assisted workflows',
+    impact: 'Daily AI-assisted engineering with Cursor and production code review',
     description:
-      'I use Cursor as my primary IDE and have built workflows that make AI an extension of my thinking, not just a code completer. From .cursorrules to multi-file context orchestration, I\'ve made AI pair programming a repeatable, reliable engineering practice.',
+      'I use Cursor as a primary IDE and treat AI pair programming as a repeatable engineering practice: project rules, multi-file context, tests, and reviews.',
     capabilities: [
       '.cursorrules & project-level AI memory',
       'Multi-file refactoring with AI context',
@@ -56,11 +54,9 @@ const domains = [
       'Codebase-aware feature implementation',
       'Documentation generation pipelines',
       'AI-driven debugging workflows',
-      'Spec-to-implementation conversion',
-      'Custom AI coding conventions',
     ],
-    tools: ['Cursor', 'GitHub Copilot', 'Tabnine', 'Cline', 'v0.dev', 'Bolt.new', 'Continue.dev', 'Aider'],
-    stats: [{ v: '60%', l: 'Faster delivery' }, { v: '3×', l: 'PRs/week' }, { v: '40%', l: 'Less bugs' }],
+    tools: ['Cursor', 'GitHub Copilot', 'v0.dev'],
+    stats: [{ v: 'Cursor', l: 'Daily driver' }, { v: 'Reviews', l: 'AI-assisted' }, { v: 'Ship', l: 'Faster loops' }],
     image: 'https://images.unsplash.com/photo-1664526937033-fe2c11f1be25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
   },
   {
@@ -71,9 +67,9 @@ const domains = [
     subtitle: 'Design Systems · Prototyping · Design-to-Code',
     color: '#A78BFA',
     glow: 'rgba(167,139,250,0.10)',
-    impact: 'Designed 3 full design systems shipped to production',
+    impact: 'Designed and implemented production-ready Figma-to-code interfaces',
     description:
-      'I sit at the intersection of design and engineering. I design in Figma with the same rigour I apply to code — component hierarchies, token systems, accessibility, and handoff. I can prototype, test, and hand-off pixel-perfect designs that developers can implement directly.',
+      'I sit at the intersection of design and engineering. I design in Figma with the same rigour I apply to code: component hierarchies, tokens, accessibility, and handoff.',
     capabilities: [
       'Full design system architecture',
       'Auto Layout & responsive components',
@@ -85,7 +81,7 @@ const domains = [
       'User flow & journey mapping',
     ],
     tools: ['Figma', 'FigJam', 'Figma Variables', 'Storybook', 'Style Dictionary', 'Zeroheight', 'Lottie', 'Framer'],
-    stats: [{ v: '3', l: 'Design Systems' }, { v: '50+', l: 'Components' }, { v: '100%', l: 'Design-to-code' }],
+    stats: [{ v: 'Figma', l: 'To code' }, { v: 'UI', l: 'Systems' }, { v: 'A11y', l: 'First' }],
     image: 'https://images.unsplash.com/photo-1662776848768-a648c81e512f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
   },
   {
@@ -96,9 +92,9 @@ const domains = [
     subtitle: 'Distributed Systems · Cloud Infra · Scalable Design',
     color: '#34D399',
     glow: 'rgba(52,211,153,0.08)',
-    impact: 'Designed systems handling 1M+ requests/day with 99.9% uptime',
+    impact: 'Shipped production systems with auth, payments, and role-based access',
     description:
-      'I design systems before writing a single line of code. From event-driven microservices to serverless architectures, I architect solutions that are observable, scalable, and resilient. I can draw the diagram and then build it.',
+      'I design systems before writing a single line of code, then implement them: auth, data models, APIs, dashboards, and deployment. The work is observable, maintainable, and ready for real users.',
     capabilities: [
       'Microservices & event-driven architecture',
       'Serverless & edge computing design',
@@ -110,7 +106,7 @@ const domains = [
       'Cost optimization strategies',
     ],
     tools: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'Redis', 'PostgreSQL', 'Kafka', 'GraphQL'],
-    stats: [{ v: '1M+', l: 'Req/day' }, { v: '99.9%', l: 'Uptime' }, { v: '4+', l: 'Cloud Platforms' }],
+    stats: [{ v: 'Auth', l: 'RBAC' }, { v: 'Payments', l: 'Stripe' }, { v: 'Cloud', l: 'AWS + Vercel' }],
     image: 'https://images.unsplash.com/photo-1664526937033-fe2c11f1be25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
   },
 ];
@@ -119,48 +115,48 @@ const domains = [
 
 const impactProjects = [
   {
-    tag: 'OpenAI × Architecture',
+    tag: 'Education × Full-Stack',
     tagColor: '#F5C518',
-    title: 'AI-Powered Code Review Platform',
+    title: 'Primus Learning Platform',
     description:
-      'Built a production system that automatically reviews GitHub PRs using GPT-4, provides inline suggestions, detects security vulnerabilities, and estimates complexity. Integrated with Slack, Jira, and GitHub Actions.',
+      'Production learning platform covering courses, bootcamps, payments, and administration. Public-safe case study of the largest eligible product I have shipped.',
     metrics: [
-      { icon: Users, label: 'Teams using it', value: '12+' },
-      { icon: TrendingUp, label: 'Faster code reviews', value: '3×' },
-      { icon: Target, label: 'Issues caught/mo', value: '200+' },
+      { icon: BookOpen, label: 'Domain', value: 'EdTech' },
+      { icon: Code2, label: 'Stack', value: 'Next.js' },
+      { icon: Target, label: 'Live site', value: 'Yes' },
     ],
-    stack: ['GPT-4', 'GitHub API', 'Node.js', 'Redis', 'PostgreSQL', 'Docker'],
+    stack: ['Next.js', 'TypeScript', 'NestJS', 'MongoDB', 'Stripe', 'Paystack'],
     type: 'Work Project',
     featured: true,
   },
   {
-    tag: 'Figma × React',
+    tag: 'Nonprofit × Product',
     tagColor: '#A78BFA',
-    title: 'Enterprise Design System',
+    title: 'One By One Ministries',
     description:
-      'Designed and built a full-scale design system from Figma components to React component library. 80+ components, dark/light theming, accessibility-first, with Storybook docs and Style Dictionary tokens.',
+      'Bilingual ministry website with donations, stories, media, maps, and an operations dashboard. Public repository and live production site.',
     metrics: [
-      { icon: Box, label: 'Components shipped', value: '80+' },
-      { icon: Users, label: 'Devs on the system', value: '8' },
-      { icon: Clock, label: 'Dev time saved/sprint', value: '30%' },
+      { icon: Globe, label: 'Live', value: 'Yes' },
+      { icon: Users, label: 'Focus', value: 'DRC' },
+      { icon: Star, label: 'Public repo', value: 'Yes' },
     ],
-    stack: ['Figma', 'React', 'TypeScript', 'Storybook', 'Style Dictionary', 'Tailwind'],
-    type: 'Work Project',
+    stack: ['Next.js', 'Supabase', 'Drizzle', 'Stripe', 'Leaflet'],
+    type: 'Product',
     featured: false,
   },
   {
-    tag: 'AI × Cursor × Architecture',
+    tag: 'Government × RBAC',
     tagColor: '#F5C518',
-    title: 'AI SaaS Starter — Full Architecture',
+    title: 'NJ Safety Driver',
     description:
-      'Designed and built an opinionated full-stack SaaS boilerplate using AI at every step. Cursor for development, GPT-4 for content generation, RAG for document Q&A, event-driven notifications, multi-tenant auth, and a payment layer.',
+      'Role-based portal for drivers, field agents, and admins: vehicles, documents, infractions, and payments.',
     metrics: [
-      { icon: Star, label: 'GitHub stars', value: '340+' },
-      { icon: Code2, label: 'Lines of code', value: '12K+' },
-      { icon: Zap, label: 'Time to production', value: '2 weeks' },
+      { icon: Users, label: 'Roles', value: '3' },
+      { icon: LayoutDashboard, label: 'Auth', value: 'Supabase' },
+      { icon: Globe, label: 'Live', value: 'Yes' },
     ],
-    stack: ['Next.js', 'OpenAI', 'Supabase', 'Stripe', 'LangChain', 'Redis', 'Cursor'],
-    type: 'Open Source',
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL'],
+    type: 'Product',
     featured: true,
   },
 ];
@@ -169,52 +165,28 @@ const impactProjects = [
 
 const sideProjects = [
   {
-    emoji: '🧠',
-    title: 'PromptVault',
-    description: 'Personal prompt library with versioning, A/B testing, and performance analytics.',
-    stack: ['Next.js', 'OpenAI', 'Supabase'],
-    links: { github: '#', live: '#' },
+    emoji: '💇',
+    title: 'Kylie Hair',
+    description: 'Salon booking, commerce, and landing CMS with a live branded site.',
+    stack: ['Next.js', 'Supabase', 'Drizzle'],
+    links: { github: '', live: 'https://www.kyliehairr.com/' },
     color: '#F5C518',
   },
   {
-    emoji: '🖼️',
-    title: 'Figma MCP Plugin',
-    description: 'MCP server that connects Figma designs directly to AI models for design critique.',
-    stack: ['Figma API', 'TypeScript', 'Claude'],
-    links: { github: '#', live: '#' },
+    emoji: '⚽',
+    title: 'MatchPulse',
+    description: 'World Cup 2026 schedule tracker with reminders and calendar export.',
+    stack: ['React', 'Vite', 'Supabase'],
+    links: { github: 'https://github.com/andersonlebon/matchpulse-mvp', live: 'https://www.matchpuls.live/' },
     color: '#A78BFA',
   },
   {
-    emoji: '⚡',
-    title: 'CursorRules.dev',
-    description: 'Curated collection of .cursorrules for 30+ tech stacks, with a generator.',
-    stack: ['Next.js', 'Tailwind', 'MDX'],
-    links: { github: '#', live: '#' },
+    emoji: '🏛️',
+    title: 'VDARVS',
+    description: 'Local-government records prototype for Lesotho village administration.',
+    stack: ['Next.js', 'Supabase', 'Playwright'],
+    links: { github: 'https://github.com/litebohop/vdarvs', live: 'https://vdarvs.vercel.app/' },
     color: '#E5E7EB',
-  },
-  {
-    emoji: '🏗️',
-    title: 'ArchDiagram AI',
-    description: 'Describe your system in plain English, get a Mermaid architecture diagram.',
-    stack: ['GPT-4', 'Mermaid.js', 'Next.js'],
-    links: { github: '#', live: '#' },
-    color: '#34D399',
-  },
-  {
-    emoji: '🎨',
-    title: 'Design Token Studio',
-    description: 'Bridge between Figma Variables and CSS/JS design tokens with live sync.',
-    stack: ['Figma API', 'Style Dictionary', 'Node.js'],
-    links: { github: '#', live: '#' },
-    color: '#A78BFA',
-  },
-  {
-    emoji: '🤖',
-    title: 'RAG Playground',
-    description: 'Upload any PDF and have a GPT-4-powered conversation with its content.',
-    stack: ['LangChain', 'Pinecone', 'Next.js'],
-    links: { github: '#', live: '#' },
-    color: '#F5C518',
   },
 ];
 
@@ -456,12 +428,16 @@ function SideProjectCard({ project, index }: { project: typeof sideProjects[0]; 
       <div className="flex items-start justify-between mb-3">
         <div className="text-2xl">{project.emoji}</div>
         <div className="flex gap-2">
-          <a href={project.links.github} className="p-1.5 rounded-lg text-gray-600 hover:text-white transition-colors">
-            <Github size={14} />
-          </a>
-          <a href={project.links.live} className="p-1.5 rounded-lg text-gray-600 hover:text-[#F5C518] transition-colors">
-            <ExternalLink size={14} />
-          </a>
+          {project.links.github && (
+            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-gray-600 hover:text-white transition-colors">
+              <Github size={14} />
+            </a>
+          )}
+          {project.links.live && (
+            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-gray-600 hover:text-[#F5C518] transition-colors">
+              <ExternalLink size={14} />
+            </a>
+          )}
         </div>
       </div>
 

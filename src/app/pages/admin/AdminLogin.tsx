@@ -25,7 +25,7 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
       if (password === ADMIN_PASSWORD) {
         onLogin();
       } else {
-        setError('Incorrect password. Try "admin123"');
+        setError('Incorrect password.');
       }
       setLoading(false);
     }, 800);

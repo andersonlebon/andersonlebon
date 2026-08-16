@@ -30,7 +30,7 @@ export function Footer() {
               <span className="text-[#F5C518]" style={{ fontFamily: 'var(--font-geist)', fontWeight: 700, fontSize: '1.2rem' }}>&gt;.</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-              Full-stack developer building scalable web applications with modern technologies.
+              {settings.subtitle}
             </p>
           </div>
 

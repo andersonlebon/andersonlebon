@@ -64,7 +64,18 @@ export function Experience() {
                       </h3>
                       <div className="flex items-center gap-2 text-sm text-gray-400">
                         <Building2 size={14} />
-                        <span className="text-[#F5C518]/80">{job.company}</span>
+                        {job.companyUrl ? (
+                          <a
+                            href={job.companyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#F5C518]/80 hover:text-[#F5C518] hover:underline"
+                          >
+                            {job.company}
+                          </a>
+                        ) : (
+                          <span className="text-[#F5C518]/80">{job.company}</span>
+                        )}
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/25 text-[#F5C518] text-xs">

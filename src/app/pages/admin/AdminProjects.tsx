@@ -10,6 +10,7 @@ const emptyProject: Omit<Project, 'id'> = {
   githubUrl: '',
   liveUrl: '',
   imageUrl: '',
+  featured: false,
 };
 
 function ProjectModal({
@@ -28,6 +29,7 @@ function ProjectModal({
     githubUrl: project.githubUrl || '',
     liveUrl: project.liveUrl || '',
     imageUrl: project.imageUrl || '',
+    featured: project.featured || false,
   });
   const [techInput, setTechInput] = useState('');
 
@@ -151,6 +153,16 @@ function ProjectModal({
               className="w-full px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-blue-500/40 transition-colors"
             />
           </div>
+
+          <label className="flex items-center gap-2 text-sm text-gray-300">
+            <input
+              type="checkbox"
+              checked={!!form.featured}
+              onChange={(e) => setForm({ ...form, featured: e.target.checked })}
+              className="rounded border-white/20"
+            />
+            Featured case study
+          </label>
         </div>
 
         <div className="p-5 border-t border-white/5 flex justify-end gap-3">

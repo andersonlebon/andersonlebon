@@ -1,46 +1,17 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Github, Star, GitCommit, BookOpen, TrendingUp } from 'lucide-react';
-
-function generateContributions() {
-  const weeks = 53;
-  const data = [];
-  for (let w = 0; w < weeks; w++) {
-    const week = [];
-    for (let d = 0; d < 7; d++) {
-      const rand = Math.random();
-      let level = 0;
-      if (rand > 0.7) level = 1;
-      if (rand > 0.8) level = 2;
-      if (rand > 0.9) level = 3;
-      if (rand > 0.95) level = 4;
-      week.push(level);
-    }
-    data.push(week);
-  }
-  return data;
-}
-
-const contributions = generateContributions();
-
-const levelColors = [
-  'bg-white/5',
-  'bg-[#F5C518]/20',
-  'bg-[#F5C518]/45',
-  'bg-[#F5C518]/70',
-  'bg-[#F5C518]',
-];
-
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import { Github, Star, BookOpen, Users } from 'lucide-react';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 const stats = [
-  { icon: GitCommit, label: 'Commits (2025)', value: '847', color: 'text-[#F5C518]', bg: 'bg-[#F5C518]/10 border-[#F5C518]/20' },
-  { icon: BookOpen, label: 'Repositories', value: '32', color: 'text-gray-300', bg: 'bg-white/5 border-white/10' },
-  { icon: Star, label: 'Stars Earned', value: '214', color: 'text-[#F5C518]', bg: 'bg-[#F5C518]/10 border-[#F5C518]/20' },
-  { icon: TrendingUp, label: 'Contribution Streak', value: '23 days', color: 'text-gray-300', bg: 'bg-white/5 border-white/10' },
+  { icon: BookOpen, label: 'Public repositories', value: '80', color: 'text-[#F5C518]', bg: 'bg-[#F5C518]/10 border-[#F5C518]/20' },
+  { icon: Users, label: 'GitHub followers', value: '137', color: 'text-gray-300', bg: 'bg-white/5 border-white/10' },
+  { icon: Star, label: 'Profile since', value: '2020', color: 'text-[#F5C518]', bg: 'bg-[#F5C518]/10 border-[#F5C518]/20' },
+  { icon: Github, label: 'Handle', value: 'andersonlebon', color: 'text-gray-300', bg: 'bg-white/5 border-white/10' },
 ];
 
 export function GitHubActivity() {
+  const { settings } = usePortfolio();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
@@ -64,7 +35,6 @@ export function GitHubActivity() {
           </h2>
         </motion.div>
 
-        {/* Stats row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -82,51 +52,34 @@ export function GitHubActivity() {
           ))}
         </motion.div>
 
-        {/* Contribution graph */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="p-6 rounded-2xl bg-white/[0.02] border border-[#F5C518]/15"
         >
-          <div className="flex items-center justify-between mb-4">
-            <p className="text-white text-sm" style={{ fontWeight: 500 }}>Contribution Graph — 2025</p>
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <span>Less</span>
-              {levelColors.map((c, i) => (
-                <div key={i} className={`w-3 h-3 rounded-sm ${c}`} />
-              ))}
-              <span>More</span>
-            </div>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+            <p className="text-white text-sm" style={{ fontWeight: 500 }}>Live GitHub summary</p>
+            <a
+              href={settings.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-[#F5C518] hover:underline"
+            >
+              View profile
+            </a>
           </div>
-
-          {/* Month labels */}
-          <div className="flex gap-1 mb-2 pl-4">
-            {months.map((m, i) => (
-              <div key={i} className="flex-1 text-center" style={{ minWidth: 0 }}>
-                <span className="text-[10px] text-gray-600">{m}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Grid */}
-          <div className="overflow-x-auto">
-            <div className="flex gap-1" style={{ minWidth: 700 }}>
-              {contributions.map((week, wi) => (
-                <div key={wi} className="flex flex-col gap-1">
-                  {week.map((level, di) => (
-                    <motion.div
-                      key={di}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ duration: 0.2, delay: (wi * 7 + di) * 0.001 }}
-                      title={`Level ${level}`}
-                      className={`w-3 h-3 rounded-sm cursor-pointer hover:scale-125 transition-transform ${levelColors[level]}`}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <img
+              src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=andersonlebon&theme=tokyonight"
+              alt="Anderson Lebon GitHub stats"
+              className="w-full max-w-[410px] h-auto"
+            />
+            <img
+              src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=andersonlebon&theme=tokyonight"
+              alt="Anderson Lebon top languages"
+              className="w-full max-w-[410px] h-auto"
+            />
           </div>
         </motion.div>
       </div>

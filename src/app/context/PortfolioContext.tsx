@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+import primusImage from '../../assets/projects/primus-learning.webp';
+import oneByOneImage from '../../assets/projects/onebyone.webp';
+import kylieImage from '../../assets/projects/kylie-hair.webp';
+import matchpulseImage from '../../assets/projects/matchpulse.webp';
+import njSafetyImage from '../../assets/projects/njsafety.webp';
+import vdarvsImage from '../../assets/projects/vdarvs.webp';
 
 export interface Project {
   id: string;
@@ -8,6 +14,7 @@ export interface Project {
   githubUrl: string;
   liveUrl: string;
   imageUrl: string;
+  featured?: boolean;
 }
 
 export interface Experience {
@@ -16,6 +23,7 @@ export interface Experience {
   role: string;
   duration: string;
   description: string[];
+  companyUrl?: string;
 }
 
 export interface Skill {
@@ -55,143 +63,129 @@ export interface SiteSettings {
   promoSpotsAvailable: string;
 }
 
+const STORAGE_VERSION = 'v2';
+const storageKey = (name: string) => `portfolio_${STORAGE_VERSION}_${name}`;
+
 const defaultProjects: Project[] = [
   {
-    id: '1',
-    title: 'LMS & Website Development Platform',
-    description: 'A full-featured Learning Management System (LMS) designed to manage online courses, instructors, and student enrollments. The platform includes secure authentication, role-based access (admin, instructor, student), and integrated payment systems (Stripe, Campay, Paystack). Built with a scalable architecture to support real-world educational platforms.',
-    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'Paystack', 'Campay'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: 'https://primuslearning.com',
-    imageUrl: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200&h=600&fit=crop',
+    id: 'primus-learning',
+    title: 'Primus Learning Platform',
+    description:
+      'A production learning platform covering courses, bootcamps, regional landing pages, payments, and learner administration. I contributed across the Next.js client and supporting APIs, including course catalogs, enrollment flows, and payment integrations used by a live education business.',
+    techStack: ['Next.js', 'TypeScript', 'Redux', 'React Query', 'NestJS', 'MongoDB', 'Stripe', 'Paystack', 'Firebase', 'Tailwind CSS'],
+    githubUrl: '',
+    liveUrl: 'https://www.primuslearning.io/',
+    imageUrl: primusImage,
+    featured: true,
   },
   {
-    id: '2',
-    title: 'E-commerce Web Application',
-    description: 'A modern e-commerce platform that allows users to browse products, manage a shopping cart, and complete secure checkout processes. Includes product management, dynamic filtering, and responsive UI optimized for both desktop and mobile users.',
-    techStack: ['React', 'Redux', 'Node.js', 'REST API', 'Stripe'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=1200&h=600&fit=crop',
+    id: 'onebyone-ministry',
+    title: 'One By One Ministries',
+    description:
+      'A bilingual ministry website for community work in the Democratic Republic of Congo. The site covers projects, stories, media, donations, contact, and an operations dashboard, with SEO, maps, and Stripe-backed giving.',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'Stripe', 'Leaflet', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/andersonlebon/onebyone-ministry',
+    liveUrl: 'https://www.onebyoneministries.org/',
+    imageUrl: oneByOneImage,
   },
   {
-    id: '3',
-    title: 'Business Website - Client Project',
-    description: 'A responsive business website developed for a real client, focusing on modern UI/UX, performance, and accessibility. Includes service pages, contact forms, and SEO optimization to enhance online presence.',
-    techStack: ['React', 'Tailwind CSS', 'Material-UI', 'SEO'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop',
+    id: 'kylie-hair',
+    title: 'Kylie Hair',
+    description:
+      'A salon site for booking, commerce, and landing-page content. Visitors can review services, shop products, and request appointments from a branded public site with a private operations backend.',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'React Query', 'Tailwind CSS'],
+    githubUrl: '',
+    liveUrl: 'https://www.kyliehairr.com/',
+    imageUrl: kylieImage,
   },
   {
-    id: '4',
-    title: 'Corporate Business Platform',
-    description: 'A dynamic website built for a client with a focus on content presentation and user engagement. Designed with responsive layouts and optimized loading performance for real-world usage.',
-    techStack: ['React', 'API Integration', 'TypeScript'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=600&fit=crop',
+    id: 'matchpulse',
+    title: 'MatchPulse',
+    description:
+      'A FIFA World Cup 2026 schedule tracker with team preferences, match reminders, calendar export, and authenticated user sessions.',
+    techStack: ['React', 'TypeScript', 'Vite', 'Supabase', 'React Query', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/andersonlebon/matchpulse-mvp',
+    liveUrl: 'https://www.matchpuls.live/',
+    imageUrl: matchpulseImage,
   },
   {
-    id: '5',
-    title: 'Store Management System',
-    description: 'A fullstack store management system that enables tracking of inventory, sales, and business operations through an intuitive admin dashboard. Features include CRUD operations, analytics, and real-time updates.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Chart.js'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1200&h=600&fit=crop',
+    id: 'nj-safety-driver',
+    title: 'NJ Safety Driver',
+    description:
+      'A role-based portal for drivers, field agents, and admins. Drivers manage vehicles and documents, agents search plates and file infractions, and admins oversee records with summary statistics.',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'React Query', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/andersonlebon/Nj-safety-driver-web',
+    liveUrl: 'https://nj-safety-driver-web.vercel.app/',
+    imageUrl: njSafetyImage,
   },
   {
-    id: '6',
-    title: 'Real-time Chat Application',
-    description: 'A real-time messaging application enabling users to communicate instantly. Built with modern web technologies and supports dynamic message updates, user sessions, and responsive UI.',
-    techStack: ['React', 'Socket.io', 'WebSockets', 'Node.js'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=1200&h=600&fit=crop',
-  },
-  {
-    id: '7',
-    title: 'Car Parking Management System',
-    description: 'A system designed to manage parking spaces efficiently, allowing tracking of available slots, reservations, and usage data through a centralized dashboard.',
-    techStack: ['JavaScript', 'React', 'Backend API', 'PostgreSQL'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=1200&h=600&fit=crop',
-  },
-  {
-    id: '8',
-    title: 'Bookstore Application',
-    description: 'A web application for managing and browsing a collection of books. Includes features such as adding, removing, and categorizing books, with state management handled efficiently.',
-    techStack: ['React', 'Redux', 'REST API'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=1200&h=600&fit=crop',
-  },
-  {
-    id: '9',
-    title: 'Admin Dashboard System',
-    description: 'A customizable admin dashboard designed to visualize and manage application data. Includes charts, tables, and user management features for efficient monitoring.',
-    techStack: ['React', 'Chart.js', 'Recharts', 'TypeScript'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop',
-  },
-  {
-    id: '10',
-    title: 'Multi-step Form & File Upload System',
-    description: 'An advanced multi-step form system with file upload capabilities, including drag-and-drop interface and progress tracking. Designed for complex data submission workflows.',
-    techStack: ['React', 'Material-UI', 'API Integration', 'File Upload'],
-    githubUrl: 'https://github.com/buyananderson',
-    liveUrl: '',
-    imageUrl: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&h=600&fit=crop',
+    id: 'vdarvs',
+    title: 'VDARVS',
+    description:
+      'Village Digital Administrative Records & Verification, a local-government prototype for Lesotho. It digitizes citizen registration, land records, official documents, and chief-led dispute workflows.',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'React Query', 'Playwright', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/litebohop/vdarvs',
+    liveUrl: 'https://vdarvs.vercel.app/',
+    imageUrl: vdarvsImage,
   },
 ];
 
 const defaultExperience: Experience[] = [
   {
-    id: '1',
-    company: 'Primuslearning',
-    role: 'Full-Stack Developer',
-    duration: '2024 – 2025',
+    id: 'aspyn-ai',
+    company: 'Aspyn AI',
+    companyUrl: 'https://aspynai.com/',
+    role: 'Full-Stack Developer & Software Engineer',
+    duration: '2025 – Present',
     description: [
-      'Led development team of 5 engineers across frontend and backend',
-      'Built full-stack LMS platform serving 10,000+ students',
-      'Managed and optimized AWS infrastructure (EC2, S3, RDS, CloudFront)',
-      'Implemented CI/CD pipelines with GitHub Actions reducing deploy time by 60%',
+      'Build and ship full-stack product work for AI operator software used by internal teams and production clients.',
+      'Contribute across web applications, APIs, and delivery workflows in a small remote engineering team.',
+      'Collaborate on architecture, reviews, and production releases without exposing private client systems.',
     ],
   },
   {
-    id: '2',
+    id: 'primus-learning',
+    company: 'Primus Learning',
+    companyUrl: 'https://www.primuslearning.io/',
+    role: 'Full-Stack Developer',
+    duration: '2024 – 2025',
+    description: [
+      'Built learning-platform features spanning course catalogs, bootcamps, payments, and administration.',
+      'Worked across Next.js clients and supporting APIs used by a live education business.',
+      'Helped ship payment and enrollment flows with Stripe, Paystack, and related services.',
+    ],
+  },
+  {
+    id: 'vaurse',
     company: 'Vaurse',
     role: 'Full-Stack Developer',
     duration: '2023 – 2024',
     description: [
-      'Built a modern recruitment platform connecting candidates with companies',
-      'Developed performant frontend with Next.js and TypeScript',
-      'Worked in a fully distributed remote team across 4 time zones',
+      'Built a modern recruitment platform connecting candidates with companies.',
+      'Developed a performant frontend with Next.js and TypeScript.',
+      'Worked in a fully distributed remote team across multiple time zones.',
     ],
   },
   {
-    id: '3',
+    id: 'xoommit',
     company: 'XOOMMIT Agency',
     role: 'Full-Stack Developer',
     duration: '2023 – 2024',
     description: [
-      'Built MVP software applications for global startup clients',
-      'Provided rapid development solutions with tight deadlines',
-      'Collaborated with designers, PMs, and international clients',
+      'Built MVP software applications for startup clients.',
+      'Delivered production-ready features under tight timelines.',
+      'Collaborated with designers, product managers, and international clients.',
     ],
   },
   {
-    id: '4',
+    id: 'nordicresults',
     company: 'NordicResults',
     role: 'Full-Stack Developer',
     duration: '2022 – 2023',
     description: [
-      'Maintained and improved Rails backend and React frontend',
-      'Refactored REST APIs improving response times by 40%',
-      'Improved overall application architecture and code quality',
+      'Maintained and improved a Rails backend and React frontend.',
+      'Refactored REST APIs and improved application architecture.',
+      'Raised code quality through reviews, refactors, and clearer service boundaries.',
     ],
   },
 ];
@@ -201,69 +195,41 @@ const defaultSkills: Skill[] = [
   { id: '2', name: 'Next.js', category: 'Frontend', icon: '▲' },
   { id: '3', name: 'TypeScript', category: 'Frontend', icon: '🔷' },
   { id: '4', name: 'Tailwind CSS', category: 'Frontend', icon: '🎨' },
-  { id: '5', name: 'Angular', category: 'Frontend', icon: '🅰️' },
-  { id: '6', name: 'Vue', category: 'Frontend', icon: '💚' },
+  { id: '5', name: 'Vite', category: 'Frontend', icon: '⚡' },
+  { id: '6', name: 'Redux', category: 'Frontend', icon: '🟣' },
   { id: '7', name: 'Node.js', category: 'Backend', icon: '🟢' },
   { id: '8', name: 'NestJS', category: 'Backend', icon: '🐱' },
   { id: '9', name: 'Ruby on Rails', category: 'Backend', icon: '💎' },
-  { id: '10', name: 'FastAPI', category: 'Backend', icon: '⚡' },
-  { id: '11', name: 'Django', category: 'Backend', icon: '🐍' },
-  { id: '12', name: 'Flask', category: 'Backend', icon: '🫙' },
-  { id: '13', name: 'Laravel', category: 'Backend', icon: '🔴' },
-  { id: '14', name: 'PostgreSQL', category: 'Databases', icon: '🐘' },
-  { id: '15', name: 'MongoDB', category: 'Databases', icon: '🍃' },
-  { id: '16', name: 'MySQL', category: 'Databases', icon: '🐬' },
-  { id: '17', name: 'AWS', category: 'DevOps', icon: '☁️' },
-  { id: '18', name: 'Docker', category: 'DevOps', icon: '🐳' },
-  { id: '19', name: 'CI/CD', category: 'DevOps', icon: '🔄' },
-  { id: '20', name: 'GitHub', category: 'DevOps', icon: '🐙' },
-  { id: '21', name: 'React Native', category: 'Mobile', icon: '📱' },
-  { id: '22', name: 'Flutter', category: 'Mobile', icon: '🐦' },
-  { id: '23', name: 'Expo', category: 'Mobile', icon: '🚀' },
+  { id: '10', name: 'Supabase', category: 'Backend', icon: '⚡' },
+  { id: '11', name: 'PostgreSQL', category: 'Databases', icon: '🐘' },
+  { id: '12', name: 'MongoDB', category: 'Databases', icon: '🍃' },
+  { id: '13', name: 'Drizzle ORM', category: 'Databases', icon: '💧' },
+  { id: '14', name: 'AWS', category: 'DevOps', icon: '☁️' },
+  { id: '15', name: 'Docker', category: 'DevOps', icon: '🐳' },
+  { id: '16', name: 'CI/CD', category: 'DevOps', icon: '🔄' },
+  { id: '17', name: 'GitHub', category: 'DevOps', icon: '🐙' },
+  { id: '18', name: 'Vercel', category: 'DevOps', icon: '▲' },
+  { id: '19', name: 'React Native', category: 'Mobile', icon: '📱' },
+  { id: '20', name: 'Stripe', category: 'Backend', icon: '💳' },
 ];
 
-const defaultMessages: Message[] = [
-  {
-    id: '1',
-    name: 'Sarah Johnson',
-    email: 'sarah@techcorp.com',
-    message: "Hi Anderson, I came across your portfolio and I'm very impressed with your LMS project. We're looking for a senior full-stack developer to join our team. Would you be open to a chat?",
-    date: '2026-03-04',
-    read: false,
-  },
-  {
-    id: '2',
-    name: 'Michael Chen',
-    email: 'mchen@startup.io',
-    message: "Hey! Love the Greenbadger project. We're building something similar and would love to get your insights. Are you available for a consulting call?",
-    date: '2026-03-03',
-    read: true,
-  },
-  {
-    id: '3',
-    name: 'Emma Rodriguez',
-    email: 'emma@agency.co',
-    message: 'Your portfolio is stunning! We have an exciting project in mind and your expertise seems like a perfect fit. Let us know if you\'re taking on freelance work.',
-    date: '2026-03-01',
-    read: true,
-  },
-];
+const defaultMessages: Message[] = [];
 
 const defaultSettings: SiteSettings = {
   name: 'Anderson',
-  bio: 'Full-stack developer experienced with modern JavaScript frameworks, cloud infrastructure, and scalable applications. Experienced working in remote teams and leading development projects.',
-  headline: 'Anderson — Full-Stack Web Developer',
-  subtitle: 'Full-stack web developer and open-source enthusiast passionate about building scalable web applications, clean architecture, and accessible design.',
-  githubUrl: 'https://github.com/anderson',
-  linkedinUrl: 'https://linkedin.com/in/anderson',
-  email: 'buyananderson@gmail.com',
-  phone: '+1-555-123-4567',
-  location: 'San Francisco, CA',
-  website: 'https://anderson.dev',
+  bio: 'Full-stack developer based in Montreal-Nord, Quebec. I currently work at Aspyn AI and previously shipped learning platforms, government prototypes, and production web apps with React, Next.js, TypeScript, and Node.js.',
+  headline: 'Anderson — Full-Stack Developer',
+  subtitle: 'Full-stack developer building production web apps, from learning platforms and booking products to government prototypes. Currently at Aspyn AI.',
+  githubUrl: 'https://github.com/andersonlebon',
+  linkedinUrl: 'https://www.linkedin.com/in/andersonlebon/',
+  email: 'laurentandersonm@outlook.com',
+  phone: '',
+  location: 'Montreal-Nord, Quebec',
+  website: 'https://www.andersone.site',
   profileImage: '',
   resumeUrl: '',
-  seoTitle: 'Anderson — Full-Stack Web Developer',
-  seoDescription: 'Portfolio of Anderson, a full-stack web developer specializing in React, Node.js, and cloud infrastructure.',
+  seoTitle: 'Anderson Lebon — Full-Stack Developer',
+  seoDescription: 'Portfolio of Anderson Lebon, a full-stack developer in Montreal working with React, Next.js, TypeScript, and Node.js. Currently at Aspyn AI.',
   promoOriginalPrice: '$200',
   promoCurrentPrice: '$50',
   promoDeliveryDays: '3',
@@ -288,7 +254,7 @@ const PortfolioContext = createContext<PortfolioContextType | null>(null);
 
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
-    const stored = localStorage.getItem(key);
+    const stored = localStorage.getItem(storageKey(key));
     if (stored) return JSON.parse(stored);
   } catch {}
   return fallback;
@@ -296,30 +262,30 @@ function loadFromStorage<T>(key: string, fallback: T): T {
 
 export function PortfolioProvider({ children }: { children: ReactNode }) {
   const [projects, setProjectsState] = useState<Project[]>(() =>
-    loadFromStorage('portfolio_projects', defaultProjects)
+    loadFromStorage('projects', defaultProjects)
   );
   const [experience, setExperienceState] = useState<Experience[]>(() =>
-    loadFromStorage('portfolio_experience', defaultExperience)
+    loadFromStorage('experience', defaultExperience)
   );
   const [skills, setSkillsState] = useState<Skill[]>(() =>
-    loadFromStorage('portfolio_skills', defaultSkills)
+    loadFromStorage('skills', defaultSkills)
   );
   const [messages, setMessagesState] = useState<Message[]>(() =>
-    loadFromStorage('portfolio_messages', defaultMessages)
+    loadFromStorage('messages', defaultMessages)
   );
   const [settings, setSettingsState] = useState<SiteSettings>(() =>
-    loadFromStorage('portfolio_settings', defaultSettings)
+    loadFromStorage('settings', defaultSettings)
   );
 
   const persist = (key: string, value: unknown) => {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(storageKey(key), JSON.stringify(value));
   };
 
-  const setProjects = (p: Project[]) => { setProjectsState(p); persist('portfolio_projects', p); };
-  const setExperience = (e: Experience[]) => { setExperienceState(e); persist('portfolio_experience', e); };
-  const setSkills = (s: Skill[]) => { setSkillsState(s); persist('portfolio_skills', s); };
-  const setMessages = (m: Message[]) => { setMessagesState(m); persist('portfolio_messages', m); };
-  const setSettings = (s: SiteSettings) => { setSettingsState(s); persist('portfolio_settings', s); };
+  const setProjects = (p: Project[]) => { setProjectsState(p); persist('projects', p); };
+  const setExperience = (e: Experience[]) => { setExperienceState(e); persist('experience', e); };
+  const setSkills = (s: Skill[]) => { setSkillsState(s); persist('skills', s); };
+  const setMessages = (m: Message[]) => { setMessagesState(m); persist('messages', m); };
+  const setSettings = (s: SiteSettings) => { setSettingsState(s); persist('settings', s); };
 
   const addMessage = (m: Omit<Message, 'id' | 'date' | 'read'>) => {
     const newMsg: Message = {
@@ -328,8 +294,7 @@ export function PortfolioProvider({ children }: { children: ReactNode }) {
       date: new Date().toISOString().split('T')[0],
       read: false,
     };
-    const updated = [newMsg, ...messages];
-    setMessages(updated);
+    setMessages([newMsg, ...messages]);
   };
 
   return (

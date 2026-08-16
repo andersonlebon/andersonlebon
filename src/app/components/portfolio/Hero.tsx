@@ -101,7 +101,7 @@ export function Hero() {
                 <motion.div variants={item}>
                   <p className="text-white/60 text-base mb-2 uppercase tracking-widest" style={{ fontSize: '0.75rem' }}>Hello, my name is</p>
                   <h1 className="mb-4 tracking-tight" style={{ fontFamily: 'var(--font-geist)', fontWeight: 800, lineHeight: 1.05 }}>
-                    <span className="text-5xl md:text-6xl lg:text-7xl text-[#F5C518] block">ANDERSON</span>
+                    <span className="text-5xl md:text-6xl lg:text-7xl text-[#F5C518] block">{settings.name.toUpperCase()}</span>
                     <span className="text-3xl md:text-4xl text-white block mt-1">Full-Stack Developer</span>
                   </h1>
                 </motion.div>
@@ -209,8 +209,8 @@ export function Hero() {
         >
           {[
             { value: '5+', label: 'Years Exp.' },
-            { value: '10+', label: 'Projects' },
-            { value: '4', label: 'Companies' },
+            { value: '6+', label: 'Featured projects' },
+            { value: '5', label: 'Companies' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-[#F5C518] text-xl mb-0.5" style={{ fontFamily: 'var(--font-geist)', fontWeight: 800 }}>
