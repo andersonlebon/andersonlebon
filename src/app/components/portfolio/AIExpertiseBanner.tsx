@@ -39,13 +39,14 @@ export function AIExpertiseBanner() {
             <div className="flex-1 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
                 <Sparkles size={15} className="text-[#F5C518]" />
-                <span className="text-xs text-[#F5C518] uppercase tracking-widest">Beyond Full-Stack</span>
+                <span className="text-xs text-[#F5C518] uppercase tracking-widest">Software + AI Engineering</span>
               </div>
               <h3 className="text-white mb-3" style={{ fontFamily: 'var(--font-geist)', fontWeight: 700, fontSize: '1.5rem' }}>
-                AI × Design × Architecture
+                AI products × full-stack systems
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed max-w-md">
-                I currently work at Aspyn AI and build production web apps across learning platforms, booking products, and operational dashboards.
+                I work at Aspyn AI, engineering AI-enabled product workflows and the full-stack
+                applications, APIs, and interfaces that make them useful.
               </p>
             </div>
 

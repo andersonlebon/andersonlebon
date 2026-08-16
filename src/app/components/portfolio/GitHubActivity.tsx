@@ -72,14 +72,14 @@ export function GitHubActivity() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <img
               src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=andersonlebon&theme=tokyonight"
-              alt="Anderson Lebon GitHub stats"
+              alt="Anderson GitHub stats"
               loading="lazy"
               decoding="async"
               className="w-full max-w-[410px] h-auto"
             />
             <img
               src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=andersonlebon&theme=tokyonight"
-              alt="Anderson Lebon top languages"
+              alt="Anderson top languages"
               loading="lazy"
               decoding="async"
               className="w-full max-w-[410px] h-auto"

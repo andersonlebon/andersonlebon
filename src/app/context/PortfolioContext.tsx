@@ -144,12 +144,12 @@ export const experience: Experience[] = [
     id: 'aspyn-ai',
     company: 'Aspyn AI',
     companyUrl: 'https://aspynai.com/',
-    role: 'Full-Stack Developer & Software Engineer',
+    role: 'Software Developer & AI Engineer',
     duration: '2025 – Present',
     description: [
-      'Build and ship full-stack product work for AI operator software used by internal teams and production clients.',
+      'Build and ship AI-enabled product work for operator software used by internal teams and production clients.',
       'Contribute across web applications, APIs, and delivery workflows in a small remote engineering team.',
-      'Collaborate on architecture, reviews, and production releases without exposing private client systems.',
+      'Integrate AI workflows with production software while keeping private client systems out of public case studies.',
     ],
   },
   {
@@ -224,16 +224,16 @@ export const skills: Skill[] = [
 
 export const settings: SiteSettings = {
   name: 'Anderson',
-  bio: 'Full-stack developer based in Montreal-Nord, Quebec. I currently work at Aspyn AI and previously shipped learning platforms, government prototypes, and production web apps with React, Next.js, TypeScript, and Node.js.',
-  headline: 'Anderson — Full-Stack Developer',
-  subtitle: 'Full-stack developer building production web apps, from learning platforms and booking products to government prototypes. Currently at Aspyn AI.',
+  bio: 'Software Developer and AI Engineer based in Montreal-Nord, Quebec. I build AI-enabled products and full-stack web applications with React, Next.js, TypeScript, and Node.js.',
+  headline: 'Anderson — Software Developer & AI Engineer',
+  subtitle: 'Software Developer and AI Engineer building AI-enabled products and production web apps. Available for freelance AI, full-stack, and MVP development.',
   githubUrl: 'https://github.com/andersonlebon',
   linkedinUrl: 'https://www.linkedin.com/in/andersonlebon/',
   email: 'laurentandersonm@outlook.com',
   location: 'Montreal-Nord, Quebec',
   website: 'https://www.andersone.site',
-  seoTitle: 'Anderson Lebon — Full-Stack Developer',
-  seoDescription: 'Portfolio of Anderson Lebon, a full-stack developer in Montreal-Nord, Quebec. Currently at Aspyn AI, building production web apps with React, Next.js, and TypeScript.',
+  seoTitle: 'Anderson | Software Developer & AI Engineer in Montreal',
+  seoDescription: 'Anderson is a Software Developer and AI Engineer in Montreal offering freelance AI applications, full-stack web development, MVPs, and API integrations.',
 };
 
 interface PortfolioContextType {

@@ -8,6 +8,7 @@ import { GitHubActivity } from '../components/portfolio/GitHubActivity';
 import { Contact } from '../components/portfolio/Contact';
 import { Footer } from '../components/portfolio/Footer';
 import { AIExpertiseBanner } from '../components/portfolio/AIExpertiseBanner';
+import { FreelanceServices } from '../components/portfolio/FreelanceServices';
 import { SEO } from '../components/SEO';
 
 export function Portfolio() {
@@ -19,6 +20,7 @@ export function Portfolio() {
       <About />
       <Projects />
       <AIExpertiseBanner />
+      <FreelanceServices />
       <Experience />
       <TechStack />
       <GitHubActivity />

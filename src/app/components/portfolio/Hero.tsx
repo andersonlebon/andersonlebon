@@ -99,7 +99,7 @@ export function Hero() {
                   <p className="text-white/60 text-base mb-2 uppercase tracking-widest" style={{ fontSize: '0.75rem' }}>Hello, my name is</p>
                   <h1 className="mb-4 tracking-tight" style={{ fontFamily: 'var(--font-geist)', fontWeight: 800, lineHeight: 1.05 }}>
                     <span className="text-5xl md:text-6xl lg:text-7xl text-[#F5C518] block">{settings.name.toUpperCase()}</span>
-                    <span className="text-3xl md:text-4xl text-white block mt-1">Full-Stack Developer</span>
+                    <span className="text-3xl md:text-4xl text-white block mt-1">Software Developer &amp; AI Engineer</span>
                   </h1>
                 </motion.div>
 
@@ -196,7 +196,7 @@ export function Hero() {
               >
                 <img
                   src={andersonPhoto}
-                  alt="Anderson Lebon, full-stack developer based in Montreal"
+                  alt="Anderson, Software Developer and AI Engineer based in Montreal"
                   width={934}
                   height={1400}
                   fetchPriority="high"

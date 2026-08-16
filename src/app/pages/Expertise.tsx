@@ -35,21 +35,21 @@ const domains = [
   {
     id: 'ai-dev',
     icon: Zap,
-    title: 'AI-assisted engineering',
-    subtitle: 'Cursor · production delivery · Aspyn AI',
+    title: 'AI product engineering',
+    subtitle: 'Model APIs · product workflows · Aspyn AI',
     color: '#E5E7EB',
-    impact: 'Daily engineering practice with Cursor, plus current work at Aspyn AI',
+    impact: 'Engineering AI-enabled product workflows in my current role at Aspyn AI',
     description:
-      'I use Cursor as my primary IDE and treat AI pair programming as a repeatable workflow: project rules, focused context, tests, and reviews. I currently work at Aspyn AI on AI operator software. Client systems stay private.',
+      'I connect AI capabilities to production software: model APIs, application context, user interfaces, and review paths. I currently work at Aspyn AI on AI operator software. Private client systems stay private.',
     capabilities: [
-      'Cursor as a daily development environment',
-      'Project rules and multi-file context',
-      'Tests and review loops with AI assistance',
-      'Shipping product work inside an AI company',
-      'Keeping private client details out of public case studies',
+      'Model API integration',
+      'Prompt and context design',
+      'AI workflows with human review',
+      'Full-stack interfaces for AI features',
+      'Testing and iteration for AI-enabled products',
     ],
-    tools: ['Cursor', 'GitHub Copilot', 'TypeScript', 'Git'],
-    stats: [{ v: 'Cursor', l: 'Daily IDE' }, { v: 'Aspyn', l: 'Current role' }, { v: 'Ship', l: 'Product work' }],
+    tools: ['OpenAI API', 'TypeScript', 'Node.js', 'Cursor', 'React'],
+    stats: [{ v: 'AI', l: 'Product work' }, { v: 'Aspyn', l: 'Current role' }, { v: 'Ship', l: 'Full stack' }],
   },
   {
     id: 'figma',
@@ -510,7 +510,7 @@ function ArchDiagram() {
 export function Expertise() {
   return (
     <div className="min-h-screen bg-[#0F0F0F]">
-      <SEO title="Expertise | Anderson Lebon, Full-Stack Developer" />
+      <SEO title="AI & Software Engineering Expertise | Anderson" />
       <Navbar />
 
       <section className="relative pt-32 pb-20 overflow-hidden">
@@ -535,12 +535,14 @@ export function Expertise() {
             </div>
 
             <h1 className="text-center mb-6" style={{ fontFamily: 'var(--font-geist)', fontWeight: 800, lineHeight: 1.05 }}>
-              <span className="block text-5xl md:text-7xl text-white">How I ship</span>
-              <span className="block text-5xl md:text-7xl text-[#F5C518] mt-1">production software</span>
+              <span className="block text-5xl md:text-7xl text-white">Software development</span>
+              <span className="block text-5xl md:text-7xl text-[#F5C518] mt-1">&amp; AI engineering</span>
             </h1>
 
             <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Full-stack developer in Montreal, currently at Aspyn AI. This page covers tools and products I can point to: live sites, public repositories, and public-safe summaries of private work.
+              Software Developer and AI Engineer in Montreal, currently at Aspyn AI. This page
+              covers the AI workflows, full-stack systems, interfaces, and production work I can
+              discuss publicly.
             </p>
 
             <div className="flex flex-wrap justify-center gap-3">
@@ -565,7 +567,7 @@ export function Expertise() {
           <SectionHeader
             label="Expertise"
             title={<>Four areas, <span className="text-[#F5C518]">one delivery loop</span></>}
-            subtitle="Product engineering, AI-assisted development, interface implementation, and the architecture needed to keep a product running."
+            subtitle="AI product engineering, full-stack development, interface implementation, and the architecture needed to keep a product running."
           />
           {domains.map((domain, i) => (
             <DomainCard key={domain.id} domain={domain} index={i} />

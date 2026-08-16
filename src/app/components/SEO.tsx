@@ -5,8 +5,8 @@ interface SEOProps {
   title?: string;
 }
 
-const DEFAULT_TITLE = 'Anderson Lebon | Full-Stack Developer in Montreal';
-const EXPERTISE_TITLE = 'Expertise | Anderson Lebon, Full-Stack Developer';
+const DEFAULT_TITLE = 'Anderson | Software Developer & AI Engineer in Montreal';
+const EXPERTISE_TITLE = 'AI & Software Engineering Expertise | Anderson';
 
 export function SEO({ title }: SEOProps) {
   const location = useLocation();

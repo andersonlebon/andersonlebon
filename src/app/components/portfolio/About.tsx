@@ -1,14 +1,14 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Users, Cloud, Code2, Globe, Lightbulb, Layers } from 'lucide-react';
+import { Users, Cloud, Code2, Globe, BrainCircuit, Layers } from 'lucide-react';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 const highlights = [
+  { icon: BrainCircuit, label: 'AI Engineering', description: 'AI-enabled products, model APIs, and workflows' },
   { icon: Users, label: 'Product Delivery', description: 'Shipped learning, booking, and operations platforms' },
   { icon: Cloud, label: 'Cloud Infrastructure', description: 'AWS, Docker, CI/CD, and Vercel' },
-  { icon: Code2, label: 'Full-Stack Dev', description: 'React, Next.js, Node.js, Rails' },
+  { icon: Code2, label: 'Software Development', description: 'React, Next.js, Node.js, Rails' },
   { icon: Globe, label: 'Remote Collaboration', description: 'Distributed teams across time zones' },
-  { icon: Lightbulb, label: 'Open-Source Mindset', description: 'Public repos, prototypes, and production sites' },
   { icon: Layers, label: 'Scalable Architecture', description: 'Auth, payments, dashboards, and data models' },
 ];
 
@@ -56,7 +56,7 @@ export function About() {
                 <a href="https://aspynai.com/" target="_blank" rel="noopener noreferrer" className="text-[#F5C518] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5C518]">
                   Aspyn AI
                 </a>
-                , building AI operator software as a full-stack developer and software engineer.
+                , building AI operator software as a Software Developer and AI Engineer.
               </p>
             </div>
 

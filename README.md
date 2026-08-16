@@ -1,16 +1,16 @@
-<img width="1397" height="927" alt="Anderson Lebon portfolio banner" src="https://github.com/user-attachments/assets/c711acff-2177-44be-8a3b-2474e9cd0582" />
+<img width="1397" height="927" alt="Anderson portfolio banner" src="https://github.com/user-attachments/assets/c711acff-2177-44be-8a3b-2474e9cd0582" />
 
-# Anderson Lebon
+# Anderson
 
-Full-stack developer in Montreal-Nord, Quebec. I currently work at [Aspyn AI](https://aspynai.com/) as a Full-Stack Developer and Software Engineer, and I ship production web apps with React, Next.js, TypeScript, and Node.js.
+Software Developer and AI Engineer in Montreal-Nord, Quebec. I currently work at [Aspyn AI](https://aspynai.com/) and offer freelance AI application, full-stack product, MVP, and integration development.
 
 **Portfolio:** [andersone.site](https://www.andersone.site/)
 **Email:** [laurentandersonm@outlook.com](mailto:laurentandersonm@outlook.com)
 **LinkedIn:** [linkedin.com/in/andersonlebon](https://www.linkedin.com/in/andersonlebon/)
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=andersonlebon&theme=tokyonight" alt="Anderson Lebon GitHub stats" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=andersonlebon&theme=tokyonight" alt="Anderson Lebon top languages" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=andersonlebon&theme=tokyonight" alt="Anderson GitHub stats" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=andersonlebon&theme=tokyonight" alt="Anderson top languages" />
 </p>
 
 ## Stack
