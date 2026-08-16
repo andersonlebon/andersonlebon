@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import primusImage from '../../assets/projects/primus-learning.webp';
 import oneByOneImage from '../../assets/projects/onebyone.webp';
 import kylieImage from '../../assets/projects/kylie-hair.webp';
@@ -10,6 +10,10 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  role: string;
+  problem: string;
+  contribution: string;
+  outcome: string;
   techStack: string[];
   githubUrl: string;
   liveUrl: string;
@@ -33,15 +37,6 @@ export interface Skill {
   icon: string;
 }
 
-export interface Message {
-  id: string;
-  name: string;
-  email: string;
-  message: string;
-  date: string;
-  read: boolean;
-}
-
 export interface SiteSettings {
   name: string;
   bio: string;
@@ -50,28 +45,22 @@ export interface SiteSettings {
   githubUrl: string;
   linkedinUrl: string;
   email: string;
-  phone: string;
   location: string;
   website: string;
-  profileImage: string;
-  resumeUrl: string;
   seoTitle: string;
   seoDescription: string;
-  promoOriginalPrice: string;
-  promoCurrentPrice: string;
-  promoDeliveryDays: string;
-  promoSpotsAvailable: string;
 }
 
-const STORAGE_VERSION = 'v2';
-const storageKey = (name: string) => `portfolio_${STORAGE_VERSION}_${name}`;
-
-const defaultProjects: Project[] = [
+export const projects: Project[] = [
   {
     id: 'primus-learning',
     title: 'Primus Learning Platform',
+    role: 'Full-Stack Developer',
+    problem: 'An education business needed one product for courses, bootcamps, enrollment, and payments instead of disconnected landing pages and admin tools.',
+    contribution: 'Built and shipped Next.js client features and supporting APIs: catalogs, regional landing pages, learner administration, and Stripe/Paystack enrollment flows.',
+    outcome: 'The platform is live at primuslearning.io and remains the largest eligible product in this portfolio. Repository details stay private.',
     description:
-      'A production learning platform covering courses, bootcamps, regional landing pages, payments, and learner administration. I contributed across the Next.js client and supporting APIs, including course catalogs, enrollment flows, and payment integrations used by a live education business.',
+      'A production learning platform covering courses, bootcamps, regional landing pages, payments, and learner administration.',
     techStack: ['Next.js', 'TypeScript', 'Redux', 'React Query', 'NestJS', 'MongoDB', 'Stripe', 'Paystack', 'Firebase', 'Tailwind CSS'],
     githubUrl: '',
     liveUrl: 'https://www.primuslearning.io/',
@@ -81,8 +70,12 @@ const defaultProjects: Project[] = [
   {
     id: 'onebyone-ministry',
     title: 'One By One Ministries',
+    role: 'Full-Stack Developer',
+    problem: 'A ministry needed a public site that could tell stories, accept donations, and manage operations in English and French.',
+    contribution: 'Designed and shipped the bilingual site, donation flow, media galleries, maps, SEO, and an operations dashboard on Next.js and Supabase.',
+    outcome: 'Live at onebyoneministries.org with a public repository and Stripe-backed giving.',
     description:
-      'A bilingual ministry website for community work in the Democratic Republic of Congo. The site covers projects, stories, media, donations, contact, and an operations dashboard, with SEO, maps, and Stripe-backed giving.',
+      'A bilingual ministry website for community work in the Democratic Republic of Congo, covering projects, stories, media, donations, and operations.',
     techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'Stripe', 'Leaflet', 'Tailwind CSS'],
     githubUrl: 'https://github.com/andersonlebon/onebyone-ministry',
     liveUrl: 'https://www.onebyoneministries.org/',
@@ -91,8 +84,12 @@ const defaultProjects: Project[] = [
   {
     id: 'kylie-hair',
     title: 'Kylie Hair',
+    role: 'Full-Stack Developer',
+    problem: 'A salon needed booking, a shop, and a branded landing page in one product instead of disconnected tools.',
+    contribution: 'Built the public site, appointment flow, commerce, and private operations backend on Next.js, Supabase, and Drizzle.',
+    outcome: 'Live at kyliehairr.com. The repository stays private; this is a public-safe product summary.',
     description:
-      'A salon site for booking, commerce, and landing-page content. Visitors can review services, shop products, and request appointments from a branded public site with a private operations backend.',
+      'A salon site for booking, commerce, and landing-page content, with a branded public experience and a private operations backend.',
     techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'React Query', 'Tailwind CSS'],
     githubUrl: '',
     liveUrl: 'https://www.kyliehairr.com/',
@@ -101,8 +98,12 @@ const defaultProjects: Project[] = [
   {
     id: 'matchpulse',
     title: 'MatchPulse',
+    role: 'Full-Stack Developer',
+    problem: 'World Cup 2026 fans needed a personal schedule with reminders and calendar export instead of hunting across sites.',
+    contribution: 'Built the tracker with team preferences, match reminders, calendar export, and authenticated sessions.',
+    outcome: 'Live at matchpuls.live with a public repository.',
     description:
-      'A FIFA World Cup 2026 schedule tracker with team preferences, match reminders, calendar export, and authenticated user sessions.',
+      'A FIFA World Cup 2026 schedule tracker with team preferences, match reminders, calendar export, and authenticated sessions.',
     techStack: ['React', 'TypeScript', 'Vite', 'Supabase', 'React Query', 'Tailwind CSS'],
     githubUrl: 'https://github.com/andersonlebon/matchpulse-mvp',
     liveUrl: 'https://www.matchpuls.live/',
@@ -111,8 +112,12 @@ const defaultProjects: Project[] = [
   {
     id: 'nj-safety-driver',
     title: 'NJ Safety Driver',
+    role: 'Full-Stack Developer',
+    problem: 'Drivers, field agents, and admins needed one portal for vehicles, documents, infractions, and payments.',
+    contribution: 'Implemented role-based access, document uploads, plate search, infraction filing, and admin statistics on Next.js and Supabase.',
+    outcome: 'Live at nj-safety-driver-web.vercel.app with a public repository.',
     description:
-      'A role-based portal for drivers, field agents, and admins. Drivers manage vehicles and documents, agents search plates and file infractions, and admins oversee records with summary statistics.',
+      'A role-based portal for drivers, field agents, and admins covering vehicles, documents, infractions, and payments.',
     techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'React Query', 'Tailwind CSS'],
     githubUrl: 'https://github.com/andersonlebon/Nj-safety-driver-web',
     liveUrl: 'https://nj-safety-driver-web.vercel.app/',
@@ -121,8 +126,12 @@ const defaultProjects: Project[] = [
   {
     id: 'vdarvs',
     title: 'VDARVS',
+    role: 'Full-Stack Developer',
+    problem: 'Lesotho village administration needed digital citizen, land, and dispute records that match local hierarchy rather than street addresses.',
+    contribution: 'Built the local-government prototype: citizen registration, land records, official documents, and chief-led dispute workflows, with documented architecture and Playwright coverage.',
+    outcome: 'Live prototype at vdarvs.vercel.app. Public repository under the litebohop organization.',
     description:
-      'Village Digital Administrative Records & Verification, a local-government prototype for Lesotho. It digitizes citizen registration, land records, official documents, and chief-led dispute workflows.',
+      'Village Digital Administrative Records & Verification, a local-government prototype for Lesotho covering registration, land, documents, and disputes.',
     techStack: ['Next.js', 'TypeScript', 'Supabase', 'Drizzle', 'PostgreSQL', 'React Query', 'Playwright', 'Tailwind CSS'],
     githubUrl: 'https://github.com/litebohop/vdarvs',
     liveUrl: 'https://vdarvs.vercel.app/',
@@ -130,7 +139,7 @@ const defaultProjects: Project[] = [
   },
 ];
 
-const defaultExperience: Experience[] = [
+export const experience: Experience[] = [
   {
     id: 'aspyn-ai',
     company: 'Aspyn AI',
@@ -190,7 +199,7 @@ const defaultExperience: Experience[] = [
   },
 ];
 
-const defaultSkills: Skill[] = [
+export const skills: Skill[] = [
   { id: '1', name: 'React', category: 'Frontend', icon: '⚛️' },
   { id: '2', name: 'Next.js', category: 'Frontend', icon: '▲' },
   { id: '3', name: 'TypeScript', category: 'Frontend', icon: '🔷' },
@@ -213,9 +222,7 @@ const defaultSkills: Skill[] = [
   { id: '20', name: 'Stripe', category: 'Backend', icon: '💳' },
 ];
 
-const defaultMessages: Message[] = [];
-
-const defaultSettings: SiteSettings = {
+export const settings: SiteSettings = {
   name: 'Anderson',
   bio: 'Full-stack developer based in Montreal-Nord, Quebec. I currently work at Aspyn AI and previously shipped learning platforms, government prototypes, and production web apps with React, Next.js, TypeScript, and Node.js.',
   headline: 'Anderson — Full-Stack Developer',
@@ -223,92 +230,34 @@ const defaultSettings: SiteSettings = {
   githubUrl: 'https://github.com/andersonlebon',
   linkedinUrl: 'https://www.linkedin.com/in/andersonlebon/',
   email: 'laurentandersonm@outlook.com',
-  phone: '',
   location: 'Montreal-Nord, Quebec',
   website: 'https://www.andersone.site',
-  profileImage: '',
-  resumeUrl: '',
   seoTitle: 'Anderson Lebon — Full-Stack Developer',
-  seoDescription: 'Portfolio of Anderson Lebon, a full-stack developer in Montreal working with React, Next.js, TypeScript, and Node.js. Currently at Aspyn AI.',
-  promoOriginalPrice: '$200',
-  promoCurrentPrice: '$50',
-  promoDeliveryDays: '3',
-  promoSpotsAvailable: '3',
+  seoDescription: 'Portfolio of Anderson Lebon, a full-stack developer in Montreal-Nord, Quebec. Currently at Aspyn AI, building production web apps with React, Next.js, and TypeScript.',
 };
 
 interface PortfolioContextType {
   projects: Project[];
   experience: Experience[];
   skills: Skill[];
-  messages: Message[];
   settings: SiteSettings;
-  setProjects: (p: Project[]) => void;
-  setExperience: (e: Experience[]) => void;
-  setSkills: (s: Skill[]) => void;
-  setMessages: (m: Message[]) => void;
-  setSettings: (s: SiteSettings) => void;
-  addMessage: (m: Omit<Message, 'id' | 'date' | 'read'>) => void;
 }
 
-const PortfolioContext = createContext<PortfolioContextType | null>(null);
-
-function loadFromStorage<T>(key: string, fallback: T): T {
-  try {
-    const stored = localStorage.getItem(storageKey(key));
-    if (stored) return JSON.parse(stored);
-  } catch {}
-  return fallback;
-}
+const PortfolioContext = createContext<PortfolioContextType>({
+  projects,
+  experience,
+  skills,
+  settings,
+});
 
 export function PortfolioProvider({ children }: { children: ReactNode }) {
-  const [projects, setProjectsState] = useState<Project[]>(() =>
-    loadFromStorage('projects', defaultProjects)
-  );
-  const [experience, setExperienceState] = useState<Experience[]>(() =>
-    loadFromStorage('experience', defaultExperience)
-  );
-  const [skills, setSkillsState] = useState<Skill[]>(() =>
-    loadFromStorage('skills', defaultSkills)
-  );
-  const [messages, setMessagesState] = useState<Message[]>(() =>
-    loadFromStorage('messages', defaultMessages)
-  );
-  const [settings, setSettingsState] = useState<SiteSettings>(() =>
-    loadFromStorage('settings', defaultSettings)
-  );
-
-  const persist = (key: string, value: unknown) => {
-    localStorage.setItem(storageKey(key), JSON.stringify(value));
-  };
-
-  const setProjects = (p: Project[]) => { setProjectsState(p); persist('projects', p); };
-  const setExperience = (e: Experience[]) => { setExperienceState(e); persist('experience', e); };
-  const setSkills = (s: Skill[]) => { setSkillsState(s); persist('skills', s); };
-  const setMessages = (m: Message[]) => { setMessagesState(m); persist('messages', m); };
-  const setSettings = (s: SiteSettings) => { setSettingsState(s); persist('settings', s); };
-
-  const addMessage = (m: Omit<Message, 'id' | 'date' | 'read'>) => {
-    const newMsg: Message = {
-      ...m,
-      id: Date.now().toString(),
-      date: new Date().toISOString().split('T')[0],
-      read: false,
-    };
-    setMessages([newMsg, ...messages]);
-  };
-
   return (
-    <PortfolioContext.Provider value={{
-      projects, experience, skills, messages, settings,
-      setProjects, setExperience, setSkills, setMessages, setSettings, addMessage,
-    }}>
+    <PortfolioContext.Provider value={{ projects, experience, skills, settings }}>
       {children}
     </PortfolioContext.Provider>
   );
 }
 
 export function usePortfolio() {
-  const ctx = useContext(PortfolioContext);
-  if (!ctx) throw new Error('usePortfolio must be used within PortfolioProvider');
-  return ctx;
+  return useContext(PortfolioContext);
 }
