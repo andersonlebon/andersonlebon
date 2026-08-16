@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/admin", "destination": "/", "permanent": true },
+    { "source": "/admin/:path*", "destination": "/", "permanent": true },
+    { "source": "/services", "destination": "/", "permanent": true },
+    { "source": "/faith", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ]
